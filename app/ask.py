@@ -25,8 +25,15 @@ def ask(question: str) -> str:
     client = genai.Client(api_key=get_api_key())
     response = client.models.generate_content(model=MODEL, contents=question)
 
-    # TODO(第1回 演習): response.usage_metadata から
-    #   入力トークン数と出力トークン数を表示してみよう（Copilotに頼んでよい）
+    usage = response.usage_metadata
+    if usage is None:
+        print("[トークン] 使用量情報なし")
+    else:
+        input_tokens = usage.prompt_token_count
+        output_tokens = usage.candidates_token_count
+        input_label = input_tokens if input_tokens is not None else "不明"
+        output_label = output_tokens if output_tokens is not None else "不明"
+        print(f"[トークン] 入力: {input_label} / 出力: {output_label}")
 
     return response.text
 
@@ -42,6 +49,9 @@ def main() -> None:
         print(ask(args.question))
     except errors.APIError as e:
         print(api_error_message(e.code, e.message))
+        if e.code == 404:
+            print(f"モデル '{MODEL}' が見つかりません。AIE_MODEL の値を確認してください。")
+            print('README の例: AIE_MODEL=gemini-3.5-flash uv run python -m app.ask "LoRAとは何ですか？"')
         raise SystemExit(1)
 
 
