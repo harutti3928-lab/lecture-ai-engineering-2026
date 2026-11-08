@@ -69,6 +69,10 @@ pyproject.toml / uv.lock  依存パッケージとその固定版
 
 宿題は「基礎・実装・発展」の3レベルがあり、どれか1つに取り組めば完了です。
 
+## このForkでの教材更新・ブランチ・提出の運用
+
+Forkは毎回作り直さず、公式リポジトリを `upstream`、自分のForkを `origin` として使います（このPCでは登録済み。別のPCでは初回だけ `git remote add upstream https://github.com/matsuolab/lecture-ai-engineering-2026.git`）。教材更新の前に編集を保存し、`git status` と `git branch --show-current` で変更と現在のブランチを確認して、未コミットの変更は適切な作業ブランチでコミットするか退避します。その後、`git switch main` → `git fetch origin` → `git merge --ff-only origin/main` → `git fetch upstream` → `git merge --ff-only upstream/main` → `git push origin main` の順で同期し、`git switch -c lec02` のように更新済みの `main` から各回のブランチを作ります。宿題は `lectures/NN/answer.md` と必要なコード・結果を編集し、対象ファイルを指定して `git add`、`git commit`、`git push -u origin lec02` を行い、自分のFork内で **base: main / compare: lec02** のPRを作って提出します。このForkでは `main` を公式教材と同じ状態に保ち、宿題は `lec01`・`lec02` などに残します。PRのマージが講座から必要と案内された場合はその指示を優先し、同期時に `--ff-only` が失敗したら強制上書きせず差分を確認します。ファイルを開くだけではブランチは切り替わらず、ブランチを切り替えると同じフォルダの内容が変わります。第1回の回答・実装・詳しいGit操作メモ（`lectures/01/使い方.md`）は `lec01` にあり、今回のREADMEの補足と資料参照の指示は `lec02` にあります。保存・コミット・pushはそれぞれPCへの保存・ローカル履歴への記録・GitHubへの送信という別の操作です。手元の第1・2回の参考PDFは `.git/info/exclude` でローカルだけ除外し、提出物には含めません。
+
 ## 前提と制約
 
 - **依存パッケージの版は固定**しています（`uv.lock`。Python 3.12、pydantic-ai-slim 2.57.0、google-genai 2.31.0）。講座の期間中は上げません。`uv sync --frozen` でそのまま入れてください。
