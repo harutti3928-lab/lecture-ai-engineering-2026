@@ -1,0 +1,117 @@
+{
+  "schema_version": 2,
+  "baseline": "baseline",
+  "comparison": "one setting changed per run",
+  "all_before_rows_identical": true,
+  "runs": [
+    {
+      "run": "baseline",
+      "result_path": "baseline/result.json",
+      "changed_config": {},
+      "epochs": 20.0,
+      "steps": 40,
+      "lora_r": 16,
+      "lr": 0.0002,
+      "trainable_parameters": 6389760,
+      "format_rate": 1.0,
+      "content_rate": 0.9047619047619048,
+      "last_logged_loss": 0.013875800371170043,
+      "train_runtime_seconds": 104.2887,
+      "incorrect_questions": [
+        "成績はいつ出ますか",
+        "オフィスアワーは事前予約が必要ですか"
+      ],
+      "new_failures": [],
+      "fixed_questions": [],
+      "same_raw_answers_as_baseline": 21
+    },
+    {
+      "run": "epochs10",
+      "result_path": "epochs10/result.json",
+      "changed_config": {
+        "num_train_epochs": [
+          20,
+          10
+        ]
+      },
+      "epochs": 10.0,
+      "steps": 20,
+      "lora_r": 16,
+      "lr": 0.0002,
+      "trainable_parameters": 6389760,
+      "format_rate": 1.0,
+      "content_rate": 0.8571428571428571,
+      "last_logged_loss": 0.09706542491912842,
+      "train_runtime_seconds": 51.63,
+      "incorrect_questions": [
+        "PDF 以外でも出せますか",
+        "成績はいつ出ますか",
+        "参考文献の書き方に指定はありますか"
+      ],
+      "new_failures": [
+        "PDF 以外でも出せますか",
+        "参考文献の書き方に指定はありますか"
+      ],
+      "fixed_questions": [
+        "オフィスアワーは事前予約が必要ですか"
+      ],
+      "same_raw_answers_as_baseline": 16
+    },
+    {
+      "run": "lora_r8",
+      "result_path": "lora_r8/result.json",
+      "changed_config": {
+        "lora_r": [
+          16,
+          8
+        ]
+      },
+      "epochs": 20.0,
+      "steps": 40,
+      "lora_r": 8,
+      "lr": 0.0002,
+      "trainable_parameters": 3194880,
+      "format_rate": 1.0,
+      "content_rate": 0.9047619047619048,
+      "last_logged_loss": 0.013526356220245362,
+      "train_runtime_seconds": 106.3579,
+      "incorrect_questions": [
+        "成績はいつ出ますか",
+        "オフィスアワーは事前予約が必要ですか"
+      ],
+      "new_failures": [],
+      "fixed_questions": [],
+      "same_raw_answers_as_baseline": 21
+    },
+    {
+      "run": "lr0.0001",
+      "result_path": "lr0.0001/result.json",
+      "changed_config": {
+        "lr": [
+          0.0002,
+          0.0001
+        ]
+      },
+      "epochs": 20.0,
+      "steps": 40,
+      "lora_r": 16,
+      "lr": 0.0001,
+      "trainable_parameters": 6389760,
+      "format_rate": 1.0,
+      "content_rate": 0.9047619047619048,
+      "last_logged_loss": 0.03304260671138763,
+      "train_runtime_seconds": 105.871,
+      "incorrect_questions": [
+        "PDF 以外でも出せますか",
+        "オフィスアワーは事前予約が必要ですか"
+      ],
+      "new_failures": [
+        "PDF 以外でも出せますか"
+      ],
+      "fixed_questions": [
+        "成績はいつ出ますか"
+      ],
+      "same_raw_answers_as_baseline": 19
+    }
+  ]
+}

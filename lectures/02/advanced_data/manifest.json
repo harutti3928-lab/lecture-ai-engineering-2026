@@ -1,0 +1,20 @@
+{
+  "source": "data/glossary.json",
+  "source_sha256": "9f9fe0d10e86780ce25222ac057f74091034fa948f06bf5b49a861eccfa83fb0",
+  "source_version": "2026-draft-1",
+  "generator": "scripts/make_sft_dataset.py",
+  "generator_sha256": "72e04de7fc7ea19a7e888f7a8be04a5bd6ea4b8cfc1d007574b81ff077b07c84",
+  "source_terms": 65,
+  "generated_qa": 130,
+  "train": 65,
+  "valid": 65,
+  "evaluation": {
+    "canonical": 10,
+    "paraphrase": 10,
+    "absent": 6
+  },
+  "system": "あなたはAIE2026の用語説明係です。AIE2026の用語集に沿って日本語で説明してください。用語集に記載がない場合は「用語集に記載がないため確認が必要です」と答えてください。",
+  "split": "First official template per term -> train; second -> valid. Independent test questions.",
+  "scope": "Known concepts appear in training. Test question wording is held out; concepts are not held out.",
+  "absent_training_examples": 0
+}
