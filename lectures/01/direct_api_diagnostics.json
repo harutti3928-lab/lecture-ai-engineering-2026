@@ -1,0 +1,103 @@
+[
+  {
+    "model": "gemini-3.8-flash",
+    "method": "direct REST via Python standard library urllib",
+    "api_version": "v1beta",
+    "executed_at": "2026-10-30T16:48:56.185010+09:00",
+    "timeout_seconds": 65,
+    "request_body": {
+      "contents": [
+        {
+          "parts": [
+            {
+              "text": "Reply with just OK."
+            }
+          ]
+        }
+      ],
+      "generationConfig": {
+        "maxOutputTokens": 64
+      }
+    },
+    "status": "transport_error",
+    "error_type": "TimeoutError",
+    "elapsed_seconds": 65.173
+  },
+  {
+    "model": "gemini-3.5-flash-lite",
+    "method": "direct REST via Python standard library urllib",
+    "api_version": "v1beta",
+    "executed_at": "2026-10-30T16:48:56.186014+09:00",
+    "timeout_seconds": 65,
+    "request_body": {
+      "contents": [
+        {
+          "parts": [
+            {
+              "text": "Reply with just OK."
+            }
+          ]
+        }
+      ],
+      "generationConfig": {
+        "maxOutputTokens": 64
+      }
+    },
+    "http_status": 200,
+    "elapsed_seconds": 0.849,
+    "response_body": {
+      "candidates": [
+        {
+          "content": {
+            "parts": [
+              {
+                "text": "OK",
+                "thoughtSignature": "EmAKXgFpFH0TexrbctzjTYaITN29JP+yIAH3quSwsDVG0VthRDJVWJT23nxtV8TBbzVFzdQDU/lMKdhQ78jje5m0dglQeuNYnfsVxyYm42enQZ7pzhOB/nb6xvKxzk/LgqU="
+              }
+            ],
+            "role": "model"
+          },
+          "finishReason": "STOP",
+          "index": 0
+        }
+      ],
+      "usageMetadata": {
+        "promptTokenCount": 5,
+        "candidatesTokenCount": 1,
+        "totalTokenCount": 6,
+        "promptTokensDetails": [
+          {
+            "modality": "TEXT",
+            "tokenCount": 5
+          }
+        ],
+        "serviceTier": "standard"
+      },
+      "modelVersion": "gemini-3.5-flash-lite",
+      "responseId": "6EvkavyuMs6M1e8P3oSfsQs"
+    }
+  },
+  {
+    "model": "gemini-3.8-flash",
+    "method": "direct REST streamGenerateContent",
+    "executed_at": "2026-10-30T16:50:38.246767+09:00",
+    "timeout_seconds": 35,
+    "request_body": {
+      "contents": [
+        {
+          "parts": [
+            {
+              "text": "Reply with just OK."
+            }
+          ]
+        }
+      ],
+      "generationConfig": {
+        "maxOutputTokens": 64
+      }
+    },
+    "status": "transport_error",
+    "error_type": "TimeoutError",
+    "elapsed_seconds": 35.102
+  }
+]
