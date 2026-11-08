@@ -1,0 +1,474 @@
+{
+  "summary": {
+    "label": "after",
+    "n": 26,
+    "passed": 11,
+    "accuracy": 0.4230769230769231,
+    "seconds": 147.565,
+    "groups": {
+      "canonical": {
+        "n": 10,
+        "passed": 9,
+        "accuracy": 0.9
+      },
+      "paraphrase": {
+        "n": 10,
+        "passed": 2,
+        "accuracy": 0.2
+      },
+      "absent": {
+        "n": 6,
+        "passed": 0,
+        "accuracy": 0.0
+      }
+    }
+  },
+  "rows": [
+    {
+      "id": "canonical-lora",
+      "category": "canonical",
+      "question": "LoRAの意味を、AIE2026の用語集に沿って教えてください。",
+      "term_id": "lora",
+      "reference": "事前学習済みの重みは固定したまま、重みの更新分を2つの小さな行列の積（低ランク行列）で表し、その小さな行列だけを学習するPEFT手法。学習するパラメータが少なく、学習結果（アダプタ）も小さいファイルで保存できる。本講座の第2回演習ではLoRAを扱う。",
+      "raw": "事前学習済みの重みは固定したまま、重みの更新分を2つの小さな行列の積（低ランク行列）で表し、その小さな行列だけを学習するPEFT手法。学習するパラメータが少なく、学習結果（アダプタ）も小さいファイルで保存できる。本講座の第2回演習ではLoRAを扱う。",
+      "passed": true,
+      "abstained": false,
+      "keyword_groups_matched": [
+        true,
+        true,
+        true
+      ],
+      "seconds": 7.406423499924131,
+      "generated_tokens": 78,
+      "hit_token_limit": false
+    },
+    {
+      "id": "paraphrase-lora",
+      "category": "paraphrase",
+      "question": "Low-Rank Adaptationの仕組みを教えてください。",
+      "term_id": "lora",
+      "reference": "事前学習済みの重みは固定したまま、重みの更新分を2つの小さな行列の積（低ランク行列）で表し、その小さな行列だけを学習するPEFT手法。学習するパラメータが少なく、学習結果（アダプタ）も小さいファイルで保存できる。本講座の第2回演習ではLoRAを扱う。",
+      "raw": "モデルを固定した「低ランク」として、学習するデータで決定した方向に合ったパラメータを学習する手法。学習するデータが多くなりすぎると安定しにくい、と設計に考えて選める。",
+      "passed": true,
+      "abstained": false,
+      "keyword_groups_matched": [
+        true,
+        true,
+        true
+      ],
+      "seconds": 4.366774299996905,
+      "generated_tokens": 47,
+      "hit_token_limit": false
+    },
+    {
+      "id": "canonical-qlora",
+      "category": "canonical",
+      "question": "QLoRAの意味を、AIE2026の用語集に沿って教えてください。",
+      "term_id": "qlora",
+      "reference": "ベースモデルの重みを4ビットなどに量子化してメモリを節約したうえで、LoRAで学習する手法。より大きなモデルを小さなGPUで扱える。本講座の第2回演習ではモデルがGPUに載るためLoRAで学習し、4ビットで読み込んだときのメモリと出力の違いを発展で比べる。",
+      "raw": "ベースモデルの重みを4ビットなどに量子化してメモリを節約したうえで、LoRAで学習する手法。より大きなモデルを小さなGPUで扱える。本講座の第2回演習ではモデルがGPUに載るためLoRAで学習し、4ビットで読み込んだときのメモリと出力の違いを発展で比べる。",
+      "passed": true,
+      "abstained": false,
+      "keyword_groups_matched": [
+        true,
+        true,
+        true
+      ],
+      "seconds": 7.984109099954367,
+      "generated_tokens": 73,
+      "hit_token_limit": false
+    },
+    {
+      "id": "paraphrase-qlora",
+      "category": "paraphrase",
+      "question": "元の重みを4ビットで保持し、小さい追加行列だけを学習する方式は何をするものですか。",
+      "term_id": "qlora",
+      "reference": "ベースモデルの重みを4ビットなどに量子化してメモリを節約したうえで、LoRAで学習する手法。より大きなモデルを小さなGPUで扱える。本講座の第2回演習ではモデルがGPUに載るためLoRAで学習し、4ビットで読み込んだときのメモリと出力の違いを発展で比べる。",
+      "raw": "大量の出力を扱うLLMを、有限的な重み（4ビット）で表し、その重みを壊す少ないノイズで調整するPEFTの手法。利用者が調整するは、行列の大きさが決めるほど出力が変わる出力空間。",
+      "passed": false,
+      "abstained": false,
+      "keyword_groups_matched": [
+        true,
+        false,
+        false
+      ],
+      "seconds": 6.502527100034058,
+      "generated_tokens": 57,
+      "hit_token_limit": false
+    },
+    {
+      "id": "canonical-rate-limit",
+      "category": "canonical",
+      "question": "レート制限の意味を、AIE2026の用語集に沿って教えてください。",
+      "term_id": "rate-limit",
+      "reference": "一定時間あたりに呼び出せるリクエスト数やトークン数の上限。超えるとHTTP 429などのエラーが返る。無料枠は特に制限が厳しく、エージェントは1つの質問で複数回LLMを呼ぶため上限に達しやすい。",
+      "raw": "一定時間あたりに呼び出せるリクエスト数やトークン数の上限。超えるとHTTP 429などのエラーが返る。無料枠は特に制限が厳しく、エージェントは1つの質問で複数回LLMを呼ぶため上限に達しやすい。",
+      "passed": true,
+      "abstained": false,
+      "keyword_groups_matched": [
+        true,
+        true,
+        true
+      ],
+      "seconds": 5.901270699920133,
+      "generated_tokens": 58,
+      "hit_token_limit": false
+    },
+    {
+      "id": "paraphrase-rate-limit",
+      "category": "paraphrase",
+      "question": "一定時間にAPIへ送れる要求数の上限と、それを超えたときの挙動を説明してください。",
+      "term_id": "rate-limit",
+      "reference": "一定時間あたりに呼び出せるリクエスト数やトークン数の上限。超えるとHTTP 429などのエラーが返る。無料枠は特に制限が厳しく、エージェントは1つの質問で複数回LLMを呼ぶため上限に達しやすい。",
+      "raw": "一定時間あたりにモデルに渡す質問の数制限。渡すより多い要求だと、数量制限に達し、また1つの質問で渡す質問を多々にしても同じ結果になるため同じ回答を返す。",
+      "passed": false,
+      "abstained": false,
+      "keyword_groups_matched": [
+        true,
+        true,
+        false
+      ],
+      "seconds": 5.338353099999949,
+      "generated_tokens": 49,
+      "hit_token_limit": false
+    },
+    {
+      "id": "canonical-api-key",
+      "category": "canonical",
+      "question": "APIキーの意味を、AIE2026の用語集に沿って教えてください。",
+      "term_id": "api-key",
+      "reference": "APIを呼び出す人を識別するための秘密の文字列。漏れると他人に利用枠を使われるため、コードに直接書かない、コミットしない、チャットに貼らない。本講座ではCodespaces secretに登録し、環境変数 GEMINI_API_KEY として読み込む。",
+      "raw": "APIを呼び出す人を識別するための秘密の文字列。漏れると他人に利用枠を使われるため、コードに直接書かない、コミットしない、チャットに貼らない。本講座ではCodespaces secretに登録し、環境変数 GEMINI_API_KEY として読み込む。",
+      "passed": true,
+      "abstained": false,
+      "keyword_groups_matched": [
+        true,
+        true,
+        true
+      ],
+      "seconds": 6.384423300041817,
+      "generated_tokens": 62,
+      "hit_token_limit": false
+    },
+    {
+      "id": "paraphrase-api-key",
+      "category": "paraphrase",
+      "question": "APIを呼び出す利用者を識別する秘密の文字列は、どう管理するものですか。",
+      "term_id": "api-key",
+      "reference": "APIを呼び出す人を識別するための秘密の文字列。漏れると他人に利用枠を使われるため、コードに直接書かない、コミットしない、チャットに貼らない。本講座ではCodespaces secretに登録し、環境変数 GEMINI_API_KEY として読み込む。",
+      "raw": "利用者がどのAPIを呼ぶかを決める「キー」と同じ秘密の文字列。キーを公開するほどその後の利用枠も公開し、公開するほど利用枠も公開する（公開するほど権限も広がる）。",
+      "passed": false,
+      "abstained": false,
+      "keyword_groups_matched": [
+        true,
+        true,
+        false
+      ],
+      "seconds": 4.866059600026347,
+      "generated_tokens": 50,
+      "hit_token_limit": false
+    },
+    {
+      "id": "canonical-context-window",
+      "category": "canonical",
+      "question": "コンテキストウィンドウの意味を、AIE2026の用語集に沿って教えてください。",
+      "term_id": "context-window",
+      "reference": "LLMが1回の呼び出しで扱える入力と出力の合計トークン数の上限。会話履歴やツールの結果もこの中に収める必要があるため、何をモデルに渡すかの設計が重要になる。",
+      "raw": "LLMが1回の呼び出しで扱える入力と出力の合計トークン数の上限。会話履歴やツールの結果もこの中に収める必要があるため、何をモデルに渡すかの設計が重要になる。",
+      "passed": true,
+      "abstained": false,
+      "keyword_groups_matched": [
+        true,
+        true,
+        true,
+        true
+      ],
+      "seconds": 4.546707500005141,
+      "generated_tokens": 46,
+      "hit_token_limit": false
+    },
+    {
+      "id": "paraphrase-context-window",
+      "category": "paraphrase",
+      "question": "一度の呼び出しで扱える入力と出力の合計量には、どのような制約がありますか。",
+      "term_id": "context-window",
+      "reference": "LLMが1回の呼び出しで扱える入力と出力の合計トークン数の上限。会話履歴やツールの結果もこの中に収める必要があるため、何をモデルに渡すかの設計が重要になる。",
+      "raw": "1つの関数呼び出しで、モデルの引数と、モデルがそれを返す結果の残る値の合計长度が上限に達しないか確認する。超過したものを切り捨てる（切り捨てる理由も文末に書く）。",
+      "passed": false,
+      "abstained": false,
+      "keyword_groups_matched": [
+        false,
+        false,
+        false,
+        true
+      ],
+      "seconds": 4.864229800063185,
+      "generated_tokens": 53,
+      "hit_token_limit": false
+    },
+    {
+      "id": "canonical-homework-levels",
+      "category": "canonical",
+      "question": "宿題の3レベルの意味を、AIE2026の用語集に沿って教えてください。",
+      "term_id": "homework-levels",
+      "reference": "AIE2026の宿題の構成。「基礎（講義内容の確認）」「実装（自分でコードを書く）」「発展（調査や試行）」の3段階があり、どれか1つに取り組めばその回の宿題は完了。原則として採点はしない。",
+      "raw": "AIE2026の宿題の3段階（講義内容、演習内容、実装要求）を、自分の関数やタスクに当てはめて見ていくこと。見ていて納得しないときは「実装要求に達していない」と答えて、探する。本講座では第2回宿題で演習と実装要求を交えて行う。",
+      "passed": false,
+      "abstained": false,
+      "keyword_groups_matched": [
+        false,
+        true,
+        false,
+        false
+      ],
+      "seconds": 7.4922913000918925,
+      "generated_tokens": 81,
+      "hit_token_limit": false
+    },
+    {
+      "id": "paraphrase-homework-levels",
+      "category": "paraphrase",
+      "question": "AIE2026で基礎・実装・発展のうちいくつ取り組めばよいのか、段階の構成も説明してください。",
+      "term_id": "homework-levels",
+      "reference": "AIE2026の宿題の構成。「基礎（講義内容の確認）」「実装（自分でコードを書く）」「発展（調査や試行）」の3段階があり、どれか1つに取り組めばその回の宿題は完了。原則として採点はしない。",
+      "raw": "AIE2026の講座運営の原則：各回の演習・宿題で1つの領域を基礎・実装・発展のどれかを決めて、その中で取り組んでから次の回へ進む。原則は「回を数えるほど深みが増す」ので、 breadth（広範囲に広げる）と depth（深い掘り進める）を平衡させるのが重要。",
+      "passed": true,
+      "abstained": false,
+      "keyword_groups_matched": [
+        true,
+        true,
+        true,
+        true
+      ],
+      "seconds": 8.952839399920776,
+      "generated_tokens": 85,
+      "hit_token_limit": false
+    },
+    {
+      "id": "canonical-answer-md",
+      "category": "canonical",
+      "question": "answer.mdの意味を、AIE2026の用語集に沿って教えてください。",
+      "term_id": "answer-md",
+      "reference": "AIE2026で各回の演習・宿題の結果を書くファイル。lectures/NN/answer.md にあり、取り組んだレベル・やったこと・結果・気づきを記入して、作業ブランチから自分のforkの main へPRを出して提出する。",
+      "raw": "AIE2026で各回の演習・宿題の内容を文章で記述するファイル。lectures/NN/answer.md にあり、取り組んだレベル・やったこと・結果・気づきを記入して、作業ブランチから自分のforkの main へPRを出して提出する。",
+      "passed": true,
+      "abstained": false,
+      "keyword_groups_matched": [
+        true,
+        true,
+        true
+      ],
+      "seconds": 7.383244799915701,
+      "generated_tokens": 65,
+      "hit_token_limit": false
+    },
+    {
+      "id": "paraphrase-answer-md",
+      "category": "paraphrase",
+      "question": "AIE2026の解答ファイルの置き場所と、提出方法を教えてください。",
+      "term_id": "answer-md",
+      "reference": "AIE2026で各回の演習・宿題の結果を書くファイル。lectures/NN/answer.md にあり、取り組んだレベル・やったこと・結果・気づきを記入して、作業ブランチから自分のforkの main へPRを出して提出する。",
+      "raw": "・解答は、演習の場所（本校の学習資源センター）に、とある教員が命名したフォルダに置く。命名は、演習の番号＋自分の名前＋（解答は公開しないため）の括弧でする。  \n・ファイルは、解答が作られた時点で受け入れる（作業中のファイルは受け入れる但不能と答える）。命名後の変更は作業ファイルとして受け入れる。",
+      "passed": false,
+      "abstained": false,
+      "keyword_groups_matched": [
+        false,
+        false,
+        false
+      ],
+      "seconds": 7.706803699955344,
+      "generated_tokens": 88,
+      "hit_token_limit": false
+    },
+    {
+      "id": "canonical-lec-start-tag",
+      "category": "canonical",
+      "question": "lecNN-start タグの意味を、AIE2026の用語集に沿って教えてください。",
+      "term_id": "lec-start-tag",
+      "reference": "AIE2026の講座repoで、各回の演習開始時点のコードに付けているGitタグ（例：lec03-start）。前の回が終わっていなくても、このタグからブランチを作ればその回の演習を始められる。",
+      "raw": "AIE2026の講座repoで、各回の演習開始時点のコードに付けているGitタグ（例：lec03-start）。前の回が終わっていなくても、このタグからブランチを作ればその回の演習を始められる。",
+      "passed": true,
+      "abstained": false,
+      "keyword_groups_matched": [
+        true,
+        true,
+        true
+      ],
+      "seconds": 4.488712099962868,
+      "generated_tokens": 53,
+      "hit_token_limit": false
+    },
+    {
+      "id": "paraphrase-lec-start-tag",
+      "category": "paraphrase",
+      "question": "講座の開始タグは何のためにあり、前の回が終わっていない場合にどう役立ちますか。",
+      "term_id": "lec-start-tag",
+      "reference": "AIE2026の講座repoで、各回の演習開始時点のコードに付けているGitタグ（例：lec03-start）。前の回が終わっていなくても、このタグからブランチを作ればその回の演習を始められる。",
+      "raw": "講座の開始を宣言する意味。前の回が終わっていないことを伝えるので、回を数えるか、報告を提出するかを決める基礎が身につく。宣言するときは「回 X の開始」と書く。",
+      "passed": false,
+      "abstained": false,
+      "keyword_groups_matched": [
+        false,
+        false,
+        false
+      ],
+      "seconds": 3.9817122999811545,
+      "generated_tokens": 45,
+      "hit_token_limit": false
+    },
+    {
+      "id": "canonical-default-model",
+      "category": "canonical",
+      "question": "既定モデルの意味を、AIE2026の用語集に沿って教えてください。",
+      "term_id": "default-model",
+      "reference": "AIE2026の演習と宿題で標準に使うモデルは gemini-3.5-flash-lite。無料枠のレート制限と講座運営の安定性を考えて選んでいる。環境変数 AIE_MODEL で他のモデルに切り替えてよく、自分で契約したAPIを使ってもよい。",
+      "raw": "AIE2026の演習と宿題で標準に使うモデルは gemini-3.5-flash-lite。無料枠のレート制限と講座運営の安定性を考えて選んでいる。環境変数 AIE_MODEL で他のモデルに切り替えてよく、自分で契約したAPIを使ってもよい。",
+      "passed": true,
+      "abstained": false,
+      "keyword_groups_matched": [
+        true,
+        true
+      ],
+      "seconds": 5.483893700060435,
+      "generated_tokens": 66,
+      "hit_token_limit": false
+    },
+    {
+      "id": "paraphrase-default-model",
+      "category": "paraphrase",
+      "question": "AIE2026のデフォルトモデルと、それを切り替える方法を説明してください。",
+      "term_id": "default-model",
+      "reference": "AIE2026の演習と宿題で標準に使うモデルは gemini-3.5-flash-lite。無料枠のレート制限と講座運営の安定性を考えて選んでいる。環境変数 AIE_MODEL で他のモデルに切り替えてよく、自分で契約したAPIを使ってもよい。",
+      "raw": "AIE2026の宿題と宿題の2つは同じモデル（default）で計算する。同じ問題でも結果が異なるのがモデルの選択が重要になる。切り替える場合は flag=「calculate_problems」にして、問題集に書かれたモデルと一致するかで判定する。",
+      "passed": false,
+      "abstained": false,
+      "keyword_groups_matched": [
+        false,
+        false
+      ],
+      "seconds": 6.126798899960704,
+      "generated_tokens": 66,
+      "hit_token_limit": false
+    },
+    {
+      "id": "canonical-temperature",
+      "category": "canonical",
+      "question": "temperatureの意味を、AIE2026の用語集に沿って教えてください。",
+      "term_id": "temperature",
+      "reference": "次のトークンを選ぶときのランダムさを調整する設定値。低いほど出力が安定し、高いほど多様になる。同じ質問でも回答が変わる理由の一つ。",
+      "raw": "次のトークンを選ぶときのランダムさを調整する設定値。低いほど出力が安定し、高いほど多様になる。同じ質問でも回答が変わる理由の一つ。",
+      "passed": true,
+      "abstained": false,
+      "keyword_groups_matched": [
+        true,
+        true,
+        true
+      ],
+      "seconds": 3.1327847000211477,
+      "generated_tokens": 36,
+      "hit_token_limit": false
+    },
+    {
+      "id": "paraphrase-temperature",
+      "category": "paraphrase",
+      "question": "温度パラメータを低くしたときと高くしたときの違いは何ですか。",
+      "term_id": "temperature",
+      "reference": "次のトークンを選ぶときのランダムさを調整する設定値。低いほど出力が安定し、高いほど多様になる。同じ質問でも回答が変わる理由の一つ。",
+      "raw": "多くのMLアプリで、学習データに均等に分配した「平衡したテストセット」を、テストモードでのパフォーマンスを測る。温度を高くすると、モデルが採る探索の方向が少し異なるため、テストモードでの性能の差が大きい。温度を低くすると採る方向が均質になり、性能の差が小さくなる。",
+      "passed": false,
+      "abstained": false,
+      "keyword_groups_matched": [
+        false,
+        true,
+        true
+      ],
+      "seconds": 6.647290599998087,
+      "generated_tokens": 76,
+      "hit_token_limit": false
+    },
+    {
+      "id": "absent-0",
+      "category": "absent",
+      "question": "AIE2026の用語集でいう「DPO」を説明してください。",
+      "term_id": null,
+      "reference": "用語集に記載がないため確認が必要です。",
+      "raw": "提示された質問と、その結果に判定した目標質問の差分（例：「教えてよ」と答えたとき「教えてよ」と答えてください）を、別のモデルでツール调用や生成で改善させること。TestMLのGeminiエージェントでは dpo_tool として設定し、学習データで差分を提供して学習する。",
+      "passed": false,
+      "abstained": false,
+      "keyword_groups_matched": [],
+      "seconds": 5.986437499988824,
+      "generated_tokens": 72,
+      "hit_token_limit": false
+    },
+    {
+      "id": "absent-1",
+      "category": "absent",
+      "question": "AIE2026の用語集でいう「PPO」を説明してください。",
+      "term_id": null,
+      "reference": "用語集に記載がないため確認が必要です。",
+      "raw": "LLMがエージェントの行動を決定させ、その行動を実行し、結果を評価し、さらに改善するサイクルを、学習データに固有の乱数で打つ技術。評価結果をベースに、より良い行動を次の行動に採用する。",
+      "passed": false,
+      "abstained": false,
+      "keyword_groups_matched": [],
+      "seconds": 4.7305656999815255,
+      "generated_tokens": 56,
+      "hit_token_limit": false
+    },
+    {
+      "id": "absent-2",
+      "category": "absent",
+      "question": "AIE2026の用語集でいう「RLAIF」を説明してください。",
+      "term_id": null,
+      "reference": "用語集に記載がないため確認が必要です。",
+      "raw": "事前学習済みのモデルを、テスト用のテキストで評価する（test_time=0）。評価セットは学習没有の汎用テキスト（ツールの名前・説明・引数の説明文など）で、モデルが答えても採点する。回数を多けることで安定した結果になる。",
+      "passed": false,
+      "abstained": false,
+      "keyword_groups_matched": [],
+      "seconds": 5.1993530000327155,
+      "generated_tokens": 63,
+      "hit_token_limit": false
+    },
+    {
+      "id": "absent-3",
+      "category": "absent",
+      "question": "AIE2026の用語集でいう「Mixture of Experts」を説明してください。",
+      "term_id": null,
+      "reference": "用語集に記載がないため確認が必要です。",
+      "raw": "2つのまたは複数のモデルを同じ入力に渡して、それぞれのモデルが扱える範囲に絞った統合モデル。異なる知識の深いモデル（例：LLM）と、速度やメモリを重視した速動モデルを組み合わせる。",
+      "passed": false,
+      "abstained": false,
+      "keyword_groups_matched": [],
+      "seconds": 4.045365499914624,
+      "generated_tokens": 51,
+      "hit_token_limit": false
+    },
+    {
+      "id": "absent-4",
+      "category": "absent",
+      "question": "AIE2026の用語集でいう「ベクトルデータベース」を説明してください。",
+      "term_id": null,
+      "reference": "用語集に記載がないため確認が必要です。",
+      "raw": "モデルが受け入れる・伝える入力と出力がどちらも数の形（単語やプロンプト）にあるもの。検索結果を直感的に数値で表して、モデルがすぐに取り込む設計。MySQL、MongoDB、Pinecone、Cursorなどがある。",
+      "passed": false,
+      "abstained": false,
+      "keyword_groups_matched": [],
+      "seconds": 4.661447799997404,
+      "generated_tokens": 56,
+      "hit_token_limit": false
+    },
+    {
+      "id": "absent-5",
+      "category": "absent",
+      "question": "AIE2026の用語集でいう「修了証発行手数料」を説明してください。",
+      "term_id": null,
+      "reference": "用語集に記載がないため確認が必要です。",
+      "raw": "修了証を配布する際に使う銀行の手数料。無料の配布サービス（例、AIE2026の配布枠）を使うことで最大に減る。",
+      "passed": false,
+      "abstained": false,
+      "keyword_groups_matched": [],
+      "seconds": 3.3835884999716654,
+      "generated_tokens": 37,
+      "hit_token_limit": false
+    }
+  ]
+}

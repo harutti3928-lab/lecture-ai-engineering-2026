@@ -1,0 +1,135 @@
+{
+  "config": {
+    "base_model": "Qwen/Qwen3.5-0.8B",
+    "revision": "2fc06364715b967f1860aea9cf38778875588b17",
+    "seed": 42,
+    "num_train_epochs": 20,
+    "lr": 0.0002,
+    "lora_r": 16,
+    "lora_alpha": 32,
+    "max_seq_len": 512,
+    "batch_size": 4,
+    "gradient_accumulation_steps": 2,
+    "warmup_steps": 6,
+    "max_new_tokens": 192,
+    "do_sample": false,
+    "dtype": "float32",
+    "task": "Plain-text glossary definitions; no glossary context supplied to model at inference"
+  },
+  "data_manifest": {
+    "source": "data/glossary.json",
+    "source_sha256": "9f9fe0d10e86780ce25222ac057f74091034fa948f06bf5b49a861eccfa83fb0",
+    "source_version": "2026-draft-1",
+    "generator": "scripts/make_sft_dataset.py",
+    "generator_sha256": "72e04de7fc7ea19a7e888f7a8be04a5bd6ea4b8cfc1d007574b81ff077b07c84",
+    "source_terms": 65,
+    "generated_qa": 130,
+    "train": 65,
+    "valid": 65,
+    "evaluation": {
+      "canonical": 10,
+      "paraphrase": 10,
+      "absent": 6
+    },
+    "system": "あなたはAIE2026の用語説明係です。AIE2026の用語集に沿って日本語で説明してください。用語集に記載がない場合は「用語集に記載がないため確認が必要です」と答えてください。",
+    "split": "First official template per term -> train; second -> valid. Independent test questions.",
+    "scope": "Known concepts appear in training. Test question wording is held out; concepts are not held out.",
+    "absent_training_examples": 0
+  },
+  "before": {
+    "label": "before",
+    "n": 26,
+    "passed": 6,
+    "accuracy": 0.23076923076923078,
+    "seconds": 280.981,
+    "groups": {
+      "canonical": {
+        "n": 10,
+        "passed": 0,
+        "accuracy": 0.0
+      },
+      "paraphrase": {
+        "n": 10,
+        "passed": 0,
+        "accuracy": 0.0
+      },
+      "absent": {
+        "n": 6,
+        "passed": 6,
+        "accuracy": 1.0
+      }
+    }
+  },
+  "after": {
+    "label": "after",
+    "n": 26,
+    "passed": 11,
+    "accuracy": 0.4230769230769231,
+    "seconds": 147.565,
+    "groups": {
+      "canonical": {
+        "n": 10,
+        "passed": 9,
+        "accuracy": 0.9
+      },
+      "paraphrase": {
+        "n": 10,
+        "passed": 2,
+        "accuracy": 0.2
+      },
+      "absent": {
+        "n": 6,
+        "passed": 0,
+        "accuracy": 0.0
+      }
+    }
+  },
+  "search": {
+    "label": "search",
+    "n": 26,
+    "passed": 21,
+    "accuracy": 0.8076923076923077,
+    "seconds": 0.012,
+    "groups": {
+      "canonical": {
+        "n": 10,
+        "passed": 10,
+        "accuracy": 1.0
+      },
+      "paraphrase": {
+        "n": 10,
+        "passed": 5,
+        "accuracy": 0.5
+      },
+      "absent": {
+        "n": 6,
+        "passed": 6,
+        "accuracy": 1.0
+      }
+    }
+  },
+  "executed_training_myself": true,
+  "regressed": [
+    "absent-0",
+    "absent-1",
+    "absent-2",
+    "absent-3",
+    "absent-4",
+    "absent-5"
+  ],
+  "improved": [
+    "canonical-lora",
+    "paraphrase-lora",
+    "canonical-qlora",
+    "canonical-rate-limit",
+    "canonical-api-key",
+    "canonical-context-window",
+    "paraphrase-homework-levels",
+    "canonical-answer-md",
+    "canonical-lec-start-tag",
+    "canonical-default-model",
+    "canonical-temperature"
+  ],
+  "metric": "Known: all keyword groups and no abstention. Absent: explicit abstention. Not full semantic correctness.",
+  "search_method": "Longest visible dictionary name, existing search_glossary, first definition; no LLM, no oracle term IDs, warm cache."
+}

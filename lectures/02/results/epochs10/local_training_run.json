@@ -1,0 +1,113 @@
+{
+  "started_at": "2026-11-08T17:55:19.340517+09:00",
+  "status": "success",
+  "cells": {
+    "2": {
+      "seconds": 0.15,
+      "peak_allocated_bytes": 0,
+      "peak_reserved_bytes": 0
+    },
+    "3": {
+      "seconds": 7.9,
+      "peak_allocated_bytes": 0,
+      "peak_reserved_bytes": 0
+    },
+    "5": {
+      "seconds": 0.0,
+      "peak_allocated_bytes": 0,
+      "peak_reserved_bytes": 0
+    },
+    "7": {
+      "seconds": 0.01,
+      "peak_allocated_bytes": 0,
+      "peak_reserved_bytes": 0
+    },
+    "9": {
+      "seconds": 3.99,
+      "peak_allocated_bytes": 3009589248,
+      "peak_reserved_bytes": 3074424832
+    },
+    "10": {
+      "seconds": 33.78,
+      "peak_allocated_bytes": 3080215552,
+      "peak_reserved_bytes": 3156213760
+    },
+    "12": {
+      "seconds": 58.0,
+      "peak_allocated_bytes": 4773365760,
+      "peak_reserved_bytes": 5175771136
+    },
+    "15": {
+      "seconds": 61.49,
+      "peak_allocated_bytes": 3165601280,
+      "peak_reserved_bytes": 5175771136
+    },
+    "17": {
+      "seconds": 18.05,
+      "peak_allocated_bytes": 3165485568,
+      "peak_reserved_bytes": 5175771136
+    },
+    "19": {
+      "seconds": 0.0,
+      "peak_allocated_bytes": 3103404544,
+      "peak_reserved_bytes": 5175771136
+    }
+  },
+  "config": {
+    "base_model": "Qwen/Qwen3.5-0.8B",
+    "revision": "2fc06364715b967f1860aea9cf38778875588b17",
+    "seed": 42,
+    "num_train_epochs": 10,
+    "warmup_steps": 6,
+    "lr": 0.0002,
+    "lora_r": 16,
+    "lora_alpha": 32,
+    "max_seq_len": 512,
+    "max_new_tokens": 96,
+    "gen": {
+      "do_sample": false
+    },
+    "work_dir": "C:\\dev\\lecture-ai-engineering-2026\\lectures\\02\\local_runs\\epochs10",
+    "drive_dir": "/content/drive/MyDrive/aie2026/qlora_lab"
+  },
+  "training": {
+    "global_step": 20,
+    "epoch": 10.0,
+    "log_history": [
+      {
+        "loss": 1.5582998275756836,
+        "grad_norm": 2.1067869663238525,
+        "learning_rate": 0.000178183148246803,
+        "entropy": 1.8351348102092744,
+        "num_tokens": 17860.0,
+        "mean_token_accuracy": 0.6902994245290757,
+        "epoch": 5.0,
+        "step": 10
+      },
+      {
+        "loss": 0.09706542491912842,
+        "grad_norm": 0.37663090229034424,
+        "learning_rate": 2.5072087818176382e-06,
+        "entropy": 0.20017855279147626,
+        "num_tokens": 35720.0,
+        "mean_token_accuracy": 0.9826838433742523,
+        "epoch": 10.0,
+        "step": 20
+      },
+      {
+        "train_runtime": 51.63,
+        "train_samples_per_second": 2.712,
+        "train_steps_per_second": 0.387,
+        "total_flos": 110607260520960.0,
+        "train_loss": 0.827682626247406,
+        "epoch": 10.0,
+        "step": 20
+      }
+    ],
+    "batch_size": 4,
+    "gradient_accumulation_steps": 2,
+    "gradient_checkpointing": true
+  },
+  "elapsed_seconds": 183.42,
+  "finished_at": "2026-11-08T17:58:22.760338+09:00"
+}

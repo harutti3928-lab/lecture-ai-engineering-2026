@@ -1,0 +1,522 @@
+{
+  "summary": {
+    "label": "search",
+    "n": 26,
+    "passed": 21,
+    "accuracy": 0.8076923076923077,
+    "seconds": 0.012,
+    "groups": {
+      "canonical": {
+        "n": 10,
+        "passed": 10,
+        "accuracy": 1.0
+      },
+      "paraphrase": {
+        "n": 10,
+        "passed": 5,
+        "accuracy": 0.5
+      },
+      "absent": {
+        "n": 6,
+        "passed": 6,
+        "accuracy": 1.0
+      }
+    }
+  },
+  "rows": [
+    {
+      "id": "canonical-lora",
+      "category": "canonical",
+      "question": "LoRAの意味を、AIE2026の用語集に沿って教えてください。",
+      "term_id": "lora",
+      "reference": "事前学習済みの重みは固定したまま、重みの更新分を2つの小さな行列の積（低ランク行列）で表し、その小さな行列だけを学習するPEFT手法。学習するパラメータが少なく、学習結果（アダプタ）も小さいファイルで保存できる。本講座の第2回演習ではLoRAを扱う。",
+      "raw": "事前学習済みの重みは固定したまま、重みの更新分を2つの小さな行列の積（低ランク行列）で表し、その小さな行列だけを学習するPEFT手法。学習するパラメータが少なく、学習結果（アダプタ）も小さいファイルで保存できる。本講座の第2回演習ではLoRAを扱う。",
+      "passed": true,
+      "abstained": false,
+      "keyword_groups_matched": [
+        true,
+        true,
+        true
+      ],
+      "seconds": 0.0005721000488847494,
+      "query": "LoRA",
+      "hits": [
+        "LoRA",
+        "ランク（LoRAのr）",
+        "QLoRA"
+      ]
+    },
+    {
+      "id": "paraphrase-lora",
+      "category": "paraphrase",
+      "question": "Low-Rank Adaptationの仕組みを教えてください。",
+      "term_id": "lora",
+      "reference": "事前学習済みの重みは固定したまま、重みの更新分を2つの小さな行列の積（低ランク行列）で表し、その小さな行列だけを学習するPEFT手法。学習するパラメータが少なく、学習結果（アダプタ）も小さいファイルで保存できる。本講座の第2回演習ではLoRAを扱う。",
+      "raw": "事前学習済みの重みは固定したまま、重みの更新分を2つの小さな行列の積（低ランク行列）で表し、その小さな行列だけを学習するPEFT手法。学習するパラメータが少なく、学習結果（アダプタ）も小さいファイルで保存できる。本講座の第2回演習ではLoRAを扱う。",
+      "passed": true,
+      "abstained": false,
+      "keyword_groups_matched": [
+        true,
+        true,
+        true
+      ],
+      "seconds": 0.0003125000512227416,
+      "query": "LoRA",
+      "hits": [
+        "LoRA",
+        "ランク（LoRAのr）",
+        "QLoRA"
+      ]
+    },
+    {
+      "id": "canonical-qlora",
+      "category": "canonical",
+      "question": "QLoRAの意味を、AIE2026の用語集に沿って教えてください。",
+      "term_id": "qlora",
+      "reference": "ベースモデルの重みを4ビットなどに量子化してメモリを節約したうえで、LoRAで学習する手法。より大きなモデルを小さなGPUで扱える。本講座の第2回演習ではモデルがGPUに載るためLoRAで学習し、4ビットで読み込んだときのメモリと出力の違いを発展で比べる。",
+      "raw": "ベースモデルの重みを4ビットなどに量子化してメモリを節約したうえで、LoRAで学習する手法。より大きなモデルを小さなGPUで扱える。本講座の第2回演習ではモデルがGPUに載るためLoRAで学習し、4ビットで読み込んだときのメモリと出力の違いを発展で比べる。",
+      "passed": true,
+      "abstained": false,
+      "keyword_groups_matched": [
+        true,
+        true,
+        true
+      ],
+      "seconds": 0.0002770000137388706,
+      "query": "QLoRA",
+      "hits": [
+        "QLoRA",
+        "LoRA"
+      ]
+    },
+    {
+      "id": "paraphrase-qlora",
+      "category": "paraphrase",
+      "question": "元の重みを4ビットで保持し、小さい追加行列だけを学習する方式は何をするものですか。",
+      "term_id": "qlora",
+      "reference": "ベースモデルの重みを4ビットなどに量子化してメモリを節約したうえで、LoRAで学習する手法。より大きなモデルを小さなGPUで扱える。本講座の第2回演習ではモデルがGPUに載るためLoRAで学習し、4ビットで読み込んだときのメモリと出力の違いを発展で比べる。",
+      "raw": "用語集に記載がないため確認が必要です。",
+      "passed": false,
+      "abstained": true,
+      "keyword_groups_matched": [
+        false,
+        false,
+        false
+      ],
+      "seconds": 0.0002853999612852931,
+      "query": "元の重みを4ビットで保持し、小さい追加行列だけを学習する方式は何をするものですか。",
+      "hits": []
+    },
+    {
+      "id": "canonical-rate-limit",
+      "category": "canonical",
+      "question": "レート制限の意味を、AIE2026の用語集に沿って教えてください。",
+      "term_id": "rate-limit",
+      "reference": "一定時間あたりに呼び出せるリクエスト数やトークン数の上限。超えるとHTTP 429などのエラーが返る。無料枠は特に制限が厳しく、エージェントは1つの質問で複数回LLMを呼ぶため上限に達しやすい。",
+      "raw": "一定時間あたりに呼び出せるリクエスト数やトークン数の上限。超えるとHTTP 429などのエラーが返る。無料枠は特に制限が厳しく、エージェントは1つの質問で複数回LLMを呼ぶため上限に達しやすい。",
+      "passed": true,
+      "abstained": false,
+      "keyword_groups_matched": [
+        true,
+        true,
+        true
+      ],
+      "seconds": 0.00027240009512752295,
+      "query": "レート制限",
+      "hits": [
+        "レート制限",
+        "トークン",
+        "エージェントループ"
+      ]
+    },
+    {
+      "id": "paraphrase-rate-limit",
+      "category": "paraphrase",
+      "question": "一定時間にAPIへ送れる要求数の上限と、それを超えたときの挙動を説明してください。",
+      "term_id": "rate-limit",
+      "reference": "一定時間あたりに呼び出せるリクエスト数やトークン数の上限。超えるとHTTP 429などのエラーが返る。無料枠は特に制限が厳しく、エージェントは1つの質問で複数回LLMを呼ぶため上限に達しやすい。",
+      "raw": "プログラムから別のサービスの機能を呼び出すための窓口。本講座ではGemini APIをPythonから呼び出してLLMを使う。",
+      "passed": false,
+      "abstained": false,
+      "keyword_groups_matched": [
+        false,
+        false,
+        false
+      ],
+      "seconds": 0.0005498999962583184,
+      "query": "API",
+      "hits": [
+        "API",
+        "APIキー",
+        "トークン"
+      ]
+    },
+    {
+      "id": "canonical-api-key",
+      "category": "canonical",
+      "question": "APIキーの意味を、AIE2026の用語集に沿って教えてください。",
+      "term_id": "api-key",
+      "reference": "APIを呼び出す人を識別するための秘密の文字列。漏れると他人に利用枠を使われるため、コードに直接書かない、コミットしない、チャットに貼らない。本講座ではCodespaces secretに登録し、環境変数 GEMINI_API_KEY として読み込む。",
+      "raw": "APIを呼び出す人を識別するための秘密の文字列。漏れると他人に利用枠を使われるため、コードに直接書かない、コミットしない、チャットに貼らない。本講座ではCodespaces secretに登録し、環境変数 GEMINI_API_KEY として読み込む。",
+      "passed": true,
+      "abstained": false,
+      "keyword_groups_matched": [
+        true,
+        true,
+        true
+      ],
+      "seconds": 0.0007425000658258796,
+      "query": "APIキー",
+      "hits": [
+        "APIキー",
+        "API",
+        "環境変数"
+      ]
+    },
+    {
+      "id": "paraphrase-api-key",
+      "category": "paraphrase",
+      "question": "APIを呼び出す利用者を識別する秘密の文字列は、どう管理するものですか。",
+      "term_id": "api-key",
+      "reference": "APIを呼び出す人を識別するための秘密の文字列。漏れると他人に利用枠を使われるため、コードに直接書かない、コミットしない、チャットに貼らない。本講座ではCodespaces secretに登録し、環境変数 GEMINI_API_KEY として読み込む。",
+      "raw": "プログラムから別のサービスの機能を呼び出すための窓口。本講座ではGemini APIをPythonから呼び出してLLMを使う。",
+      "passed": false,
+      "abstained": false,
+      "keyword_groups_matched": [
+        false,
+        false,
+        false
+      ],
+      "seconds": 0.0007778001017868519,
+      "query": "API",
+      "hits": [
+        "API",
+        "APIキー",
+        "トークン"
+      ]
+    },
+    {
+      "id": "canonical-context-window",
+      "category": "canonical",
+      "question": "コンテキストウィンドウの意味を、AIE2026の用語集に沿って教えてください。",
+      "term_id": "context-window",
+      "reference": "LLMが1回の呼び出しで扱える入力と出力の合計トークン数の上限。会話履歴やツールの結果もこの中に収める必要があるため、何をモデルに渡すかの設計が重要になる。",
+      "raw": "LLMが1回の呼び出しで扱える入力と出力の合計トークン数の上限。会話履歴やツールの結果もこの中に収める必要があるため、何をモデルに渡すかの設計が重要になる。",
+      "passed": true,
+      "abstained": false,
+      "keyword_groups_matched": [
+        true,
+        true,
+        true,
+        true
+      ],
+      "seconds": 0.00044380000326782465,
+      "query": "コンテキストウィンドウ",
+      "hits": [
+        "コンテキストウィンドウ",
+        "トークン"
+      ]
+    },
+    {
+      "id": "paraphrase-context-window",
+      "category": "paraphrase",
+      "question": "一度の呼び出しで扱える入力と出力の合計量には、どのような制約がありますか。",
+      "term_id": "context-window",
+      "reference": "LLMが1回の呼び出しで扱える入力と出力の合計トークン数の上限。会話履歴やツールの結果もこの中に収める必要があるため、何をモデルに渡すかの設計が重要になる。",
+      "raw": "用語集に記載がないため確認が必要です。",
+      "passed": false,
+      "abstained": true,
+      "keyword_groups_matched": [
+        false,
+        false,
+        false,
+        false
+      ],
+      "seconds": 0.00028719997499138117,
+      "query": "一度の呼び出しで扱える入力と出力の合計量には、どのような制約がありますか。",
+      "hits": []
+    },
+    {
+      "id": "canonical-homework-levels",
+      "category": "canonical",
+      "question": "宿題の3レベルの意味を、AIE2026の用語集に沿って教えてください。",
+      "term_id": "homework-levels",
+      "reference": "AIE2026の宿題の構成。「基礎（講義内容の確認）」「実装（自分でコードを書く）」「発展（調査や試行）」の3段階があり、どれか1つに取り組めばその回の宿題は完了。原則として採点はしない。",
+      "raw": "AIE2026の宿題の構成。「基礎（講義内容の確認）」「実装（自分でコードを書く）」「発展（調査や試行）」の3段階があり、どれか1つに取り組めばその回の宿題は完了。原則として採点はしない。",
+      "passed": true,
+      "abstained": false,
+      "keyword_groups_matched": [
+        true,
+        true,
+        true,
+        true
+      ],
+      "seconds": 0.00029319990426301956,
+      "query": "宿題の3レベル",
+      "hits": [
+        "宿題の3レベル"
+      ]
+    },
+    {
+      "id": "paraphrase-homework-levels",
+      "category": "paraphrase",
+      "question": "AIE2026で基礎・実装・発展のうちいくつ取り組めばよいのか、段階の構成も説明してください。",
+      "term_id": "homework-levels",
+      "reference": "AIE2026の宿題の構成。「基礎（講義内容の確認）」「実装（自分でコードを書く）」「発展（調査や試行）」の3段階があり、どれか1つに取り組めばその回の宿題は完了。原則として採点はしない。",
+      "raw": "用語集に記載がないため確認が必要です。",
+      "passed": false,
+      "abstained": true,
+      "keyword_groups_matched": [
+        false,
+        false,
+        false,
+        false
+      ],
+      "seconds": 0.00034769997000694275,
+      "query": "AIE2026で基礎・実装・発展のうちいくつ取り組めばよいのか、段階の構成も説明してください。",
+      "hits": []
+    },
+    {
+      "id": "canonical-answer-md",
+      "category": "canonical",
+      "question": "answer.mdの意味を、AIE2026の用語集に沿って教えてください。",
+      "term_id": "answer-md",
+      "reference": "AIE2026で各回の演習・宿題の結果を書くファイル。lectures/NN/answer.md にあり、取り組んだレベル・やったこと・結果・気づきを記入して、作業ブランチから自分のforkの main へPRを出して提出する。",
+      "raw": "AIE2026で各回の演習・宿題の結果を書くファイル。lectures/NN/answer.md にあり、取り組んだレベル・やったこと・結果・気づきを記入して、作業ブランチから自分のforkの main へPRを出して提出する。",
+      "passed": true,
+      "abstained": false,
+      "keyword_groups_matched": [
+        true,
+        true,
+        true
+      ],
+      "seconds": 0.0005677000153809786,
+      "query": "answer.md",
+      "hits": [
+        "answer.md"
+      ]
+    },
+    {
+      "id": "paraphrase-answer-md",
+      "category": "paraphrase",
+      "question": "AIE2026の解答ファイルの置き場所と、提出方法を教えてください。",
+      "term_id": "answer-md",
+      "reference": "AIE2026で各回の演習・宿題の結果を書くファイル。lectures/NN/answer.md にあり、取り組んだレベル・やったこと・結果・気づきを記入して、作業ブランチから自分のforkの main へPRを出して提出する。",
+      "raw": "AIE2026で各回の演習・宿題の結果を書くファイル。lectures/NN/answer.md にあり、取り組んだレベル・やったこと・結果・気づきを記入して、作業ブランチから自分のforkの main へPRを出して提出する。",
+      "passed": true,
+      "abstained": false,
+      "keyword_groups_matched": [
+        true,
+        true,
+        true
+      ],
+      "seconds": 0.0004848999669775367,
+      "query": "answer.md",
+      "hits": [
+        "answer.md"
+      ]
+    },
+    {
+      "id": "canonical-lec-start-tag",
+      "category": "canonical",
+      "question": "lecNN-start タグの意味を、AIE2026の用語集に沿って教えてください。",
+      "term_id": "lec-start-tag",
+      "reference": "AIE2026の講座repoで、各回の演習開始時点のコードに付けているGitタグ（例：lec03-start）。前の回が終わっていなくても、このタグからブランチを作ればその回の演習を始められる。",
+      "raw": "AIE2026の講座repoで、各回の演習開始時点のコードに付けているGitタグ（例：lec03-start）。前の回が終わっていなくても、このタグからブランチを作ればその回の演習を始められる。",
+      "passed": true,
+      "abstained": false,
+      "keyword_groups_matched": [
+        true,
+        true,
+        true
+      ],
+      "seconds": 0.0005029999883845448,
+      "query": "lecNN-start タグ",
+      "hits": [
+        "lecNN-start タグ"
+      ]
+    },
+    {
+      "id": "paraphrase-lec-start-tag",
+      "category": "paraphrase",
+      "question": "講座の開始タグは何のためにあり、前の回が終わっていない場合にどう役立ちますか。",
+      "term_id": "lec-start-tag",
+      "reference": "AIE2026の講座repoで、各回の演習開始時点のコードに付けているGitタグ（例：lec03-start）。前の回が終わっていなくても、このタグからブランチを作ればその回の演習を始められる。",
+      "raw": "AIE2026の講座repoで、各回の演習開始時点のコードに付けているGitタグ（例：lec03-start）。前の回が終わっていなくても、このタグからブランチを作ればその回の演習を始められる。",
+      "passed": true,
+      "abstained": false,
+      "keyword_groups_matched": [
+        true,
+        true,
+        true
+      ],
+      "seconds": 0.0007128000725060701,
+      "query": "lecNN-start タグ",
+      "hits": [
+        "lecNN-start タグ"
+      ]
+    },
+    {
+      "id": "canonical-default-model",
+      "category": "canonical",
+      "question": "既定モデルの意味を、AIE2026の用語集に沿って教えてください。",
+      "term_id": "default-model",
+      "reference": "AIE2026の演習と宿題で標準に使うモデルは gemini-3.5-flash-lite。無料枠のレート制限と講座運営の安定性を考えて選んでいる。環境変数 AIE_MODEL で他のモデルに切り替えてよく、自分で契約したAPIを使ってもよい。",
+      "raw": "AIE2026の演習と宿題で標準に使うモデルは gemini-3.5-flash-lite。無料枠のレート制限と講座運営の安定性を考えて選んでいる。環境変数 AIE_MODEL で他のモデルに切り替えてよく、自分で契約したAPIを使ってもよい。",
+      "passed": true,
+      "abstained": false,
+      "keyword_groups_matched": [
+        true,
+        true
+      ],
+      "seconds": 0.00035420001950114965,
+      "query": "既定モデル",
+      "hits": [
+        "既定モデル"
+      ]
+    },
+    {
+      "id": "paraphrase-default-model",
+      "category": "paraphrase",
+      "question": "AIE2026のデフォルトモデルと、それを切り替える方法を説明してください。",
+      "term_id": "default-model",
+      "reference": "AIE2026の演習と宿題で標準に使うモデルは gemini-3.5-flash-lite。無料枠のレート制限と講座運営の安定性を考えて選んでいる。環境変数 AIE_MODEL で他のモデルに切り替えてよく、自分で契約したAPIを使ってもよい。",
+      "raw": "AIE2026の演習と宿題で標準に使うモデルは gemini-3.5-flash-lite。無料枠のレート制限と講座運営の安定性を考えて選んでいる。環境変数 AIE_MODEL で他のモデルに切り替えてよく、自分で契約したAPIを使ってもよい。",
+      "passed": true,
+      "abstained": false,
+      "keyword_groups_matched": [
+        true,
+        true
+      ],
+      "seconds": 0.0006385999731719494,
+      "query": "既定モデル",
+      "hits": [
+        "既定モデル"
+      ]
+    },
+    {
+      "id": "canonical-temperature",
+      "category": "canonical",
+      "question": "temperatureの意味を、AIE2026の用語集に沿って教えてください。",
+      "term_id": "temperature",
+      "reference": "次のトークンを選ぶときのランダムさを調整する設定値。低いほど出力が安定し、高いほど多様になる。同じ質問でも回答が変わる理由の一つ。",
+      "raw": "次のトークンを選ぶときのランダムさを調整する設定値。低いほど出力が安定し、高いほど多様になる。同じ質問でも回答が変わる理由の一つ。",
+      "passed": true,
+      "abstained": false,
+      "keyword_groups_matched": [
+        true,
+        true,
+        true
+      ],
+      "seconds": 0.000359599944204092,
+      "query": "temperature",
+      "hits": [
+        "temperature"
+      ]
+    },
+    {
+      "id": "paraphrase-temperature",
+      "category": "paraphrase",
+      "question": "温度パラメータを低くしたときと高くしたときの違いは何ですか。",
+      "term_id": "temperature",
+      "reference": "次のトークンを選ぶときのランダムさを調整する設定値。低いほど出力が安定し、高いほど多様になる。同じ質問でも回答が変わる理由の一つ。",
+      "raw": "次のトークンを選ぶときのランダムさを調整する設定値。低いほど出力が安定し、高いほど多様になる。同じ質問でも回答が変わる理由の一つ。",
+      "passed": true,
+      "abstained": false,
+      "keyword_groups_matched": [
+        true,
+        true,
+        true
+      ],
+      "seconds": 0.00039060006383806467,
+      "query": "temperature",
+      "hits": [
+        "temperature"
+      ]
+    },
+    {
+      "id": "absent-0",
+      "category": "absent",
+      "question": "AIE2026の用語集でいう「DPO」を説明してください。",
+      "term_id": null,
+      "reference": "用語集に記載がないため確認が必要です。",
+      "raw": "用語集に記載がないため確認が必要です。",
+      "passed": true,
+      "abstained": true,
+      "keyword_groups_matched": [],
+      "seconds": 0.0003440999425947666,
+      "query": "AIE2026の用語集でいう「DPO」を説明してください。",
+      "hits": []
+    },
+    {
+      "id": "absent-1",
+      "category": "absent",
+      "question": "AIE2026の用語集でいう「PPO」を説明してください。",
+      "term_id": null,
+      "reference": "用語集に記載がないため確認が必要です。",
+      "raw": "用語集に記載がないため確認が必要です。",
+      "passed": true,
+      "abstained": true,
+      "keyword_groups_matched": [],
+      "seconds": 0.0007160999812185764,
+      "query": "AIE2026の用語集でいう「PPO」を説明してください。",
+      "hits": []
+    },
+    {
+      "id": "absent-2",
+      "category": "absent",
+      "question": "AIE2026の用語集でいう「RLAIF」を説明してください。",
+      "term_id": null,
+      "reference": "用語集に記載がないため確認が必要です。",
+      "raw": "用語集に記載がないため確認が必要です。",
+      "passed": true,
+      "abstained": true,
+      "keyword_groups_matched": [],
+      "seconds": 0.0007243999280035496,
+      "query": "AIE2026の用語集でいう「RLAIF」を説明してください。",
+      "hits": []
+    },
+    {
+      "id": "absent-3",
+      "category": "absent",
+      "question": "AIE2026の用語集でいう「Mixture of Experts」を説明してください。",
+      "term_id": null,
+      "reference": "用語集に記載がないため確認が必要です。",
+      "raw": "用語集に記載がないため確認が必要です。",
+      "passed": true,
+      "abstained": true,
+      "keyword_groups_matched": [],
+      "seconds": 0.0003128000535070896,
+      "query": "AIE2026の用語集でいう「Mixture of Experts」を説明してください。",
+      "hits": []
+    },
+    {
+      "id": "absent-4",
+      "category": "absent",
+      "question": "AIE2026の用語集でいう「ベクトルデータベース」を説明してください。",
+      "term_id": null,
+      "reference": "用語集に記載がないため確認が必要です。",
+      "raw": "用語集に記載がないため確認が必要です。",
+      "passed": true,
+      "abstained": true,
+      "keyword_groups_matched": [],
+      "seconds": 0.0002856999635696411,
+      "query": "AIE2026の用語集でいう「ベクトルデータベース」を説明してください。",
+      "hits": []
+    },
+    {
+      "id": "absent-5",
+      "category": "absent",
+      "question": "AIE2026の用語集でいう「修了証発行手数料」を説明してください。",
+      "term_id": null,
+      "reference": "用語集に記載がないため確認が必要です。",
+      "raw": "用語集に記載がないため確認が必要です。",
+      "passed": true,
+      "abstained": true,
+      "keyword_groups_matched": [],
+      "seconds": 0.00037349993363022804,
+      "query": "AIE2026の用語集でいう「修了証発行手数料」を説明してください。",
+      "hits": []
+    }
+  ]
+}

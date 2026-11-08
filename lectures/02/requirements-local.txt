@@ -1,0 +1,10 @@
+# PyTorchは先にCUDA版を入れる（answer.mdの手順参照）。
+torch==2.11.0
+transformers==5.18.0
+peft==0.21.1
+trl==1.14.2
+accelerate==1.15.0
+datasets==5.1.0
+pandas==3.1.1
+ipykernel==7.4.0
+pip==26.3

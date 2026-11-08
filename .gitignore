@@ -12,3 +12,6 @@ learning_log/
 
 # macOS
 .DS_Store
+
+# 第2回のローカル学習出力（提出用JSONは必要なものだけ別途コピーする）
+/lectures/02/local_runs/

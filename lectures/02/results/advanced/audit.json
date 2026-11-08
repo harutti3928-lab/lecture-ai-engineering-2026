@@ -1,0 +1,51 @@
+{
+  "data_sha256": {
+    "evaluation.jsonl": "8c07668780ae06f9dc28bf0be17960e57c0f9704f7d7fcabc2861e401208b1d2",
+    "glossary_sft.jsonl": "38fac31bd310e919fc8e01e8158bfd1476a4b6b655e1e9a5f51ef73ba9242804",
+    "train.jsonl": "cfee61eb4bab76b71dff4b0b3abfa520facaf13dfd3a2c876ddd7f44acfac536",
+    "valid.jsonl": "6d643313982924e3154f4513dd33ce2909327f42db01ebb7ab84a2698a359558"
+  },
+  "methods": {
+    "before": {
+      "known_passed": 0,
+      "known_n": 20,
+      "generation_limit_hits": 20,
+      "abstained": 17
+    },
+    "after": {
+      "known_passed": 11,
+      "known_n": 20,
+      "generation_limit_hits": 0,
+      "abstained": 0
+    },
+    "search": {
+      "known_passed": 15,
+      "known_n": 20,
+      "generation_limit_hits": 0,
+      "abstained": 9
+    }
+  },
+  "qualitative_review": {
+    "scope": "Examples reviewed after scoring; automatic scores are retained unchanged.",
+    "automatic_passes_with_unsupported_or_unclear_content": [
+      {
+        "id": "paraphrase-lora",
+        "note": "固定・低ランク・学習という語句では合格するが、2つの行列による更新の説明がなく、データ量と不安定さについて根拠にない説明を加えている。"
+      },
+      {
+        "id": "paraphrase-homework-levels",
+        "note": "基礎・実装・発展・1つの語句で合格するが、次の回へ進む条件やbreadth/depthの方針を付け加えており、用語集の忠実な説明とはいえない。"
+      }
+    ],
+    "absent_after": "All six lack explicit abstention and give definitions or facts unsupported by this glossary.",
+    "interpretation": "Keyword pass rates are proxies, not fully verified semantic accuracy. In particular the two paraphrase passes need human review."
+  },
+  "versions": {
+    "torch": "2.11.0+cu130",
+    "transformers": "5.18.0",
+    "peft": "0.21.1",
+    "trl": "1.14.2",
+    "accelerate": "1.15.0",
+    "datasets": "5.1.0"
+  }
+}

@@ -1,0 +1,474 @@
+{
+  "summary": {
+    "label": "before",
+    "n": 26,
+    "passed": 6,
+    "accuracy": 0.23076923076923078,
+    "seconds": 280.981,
+    "groups": {
+      "canonical": {
+        "n": 10,
+        "passed": 0,
+        "accuracy": 0.0
+      },
+      "paraphrase": {
+        "n": 10,
+        "passed": 0,
+        "accuracy": 0.0
+      },
+      "absent": {
+        "n": 6,
+        "passed": 6,
+        "accuracy": 1.0
+      }
+    }
+  },
+  "rows": [
+    {
+      "id": "canonical-lora",
+      "category": "canonical",
+      "question": "LoRAの意味を、AIE2026の用語集に沿って教えてください。",
+      "term_id": "lora",
+      "reference": "事前学習済みの重みは固定したまま、重みの更新分を2つの小さな行列の積（低ランク行列）で表し、その小さな行列だけを学習するPEFT手法。学習するパラメータが少なく、学習結果（アダプタ）も小さいファイルで保存できる。本講座の第2回演習ではLoRAを扱う。",
+      "raw": "AIE2026 の用語集では、**LoRA（Low-Rank Adaptation）**という用語は記載されていません。\n\nAIE2026 の用語集では、**「LoRA（Low-Rank Adaptation）」という用語は記載されていません。**\n\nそのため、AIE2026 の用語集に記載がないため確認が必要です。",
+      "passed": false,
+      "abstained": true,
+      "keyword_groups_matched": [
+        false,
+        false,
+        false
+      ],
+      "seconds": 4.382799800019711,
+      "generated_tokens": 79,
+      "hit_token_limit": false
+    },
+    {
+      "id": "paraphrase-lora",
+      "category": "paraphrase",
+      "question": "Low-Rank Adaptationの仕組みを教えてください。",
+      "term_id": "lora",
+      "reference": "事前学習済みの重みは固定したまま、重みの更新分を2つの小さな行列の積（低ランク行列）で表し、その小さな行列だけを学習するPEFT手法。学習するパラメータが少なく、学習結果（アダプタ）も小さいファイルで保存できる。本講座の第2回演習ではLoRAを扱う。",
+      "raw": "AIE2026 の用語解説：Low-Rank Adaptation（低秩適応）\n\n**Low-Rank Adaptation（低秩適応）** は、機械学習の「低秩分解（Low-Rank Decomposition）」の応用手法で、データセットの構造を低秩なモデルに適合させることで、学習速度を大幅に向上させ、計算コストを削減する技術です。\n\n### 1. 基本の仕組み\n低秩適応は、データセットの固有の構造（低秩性）をモデルに反映させることで、学習を加速します。\n\n*   **低秩分解の概念**:\n    一般的に、データ $X$ は以下の形式で表されます：\n    $$X = U \\Sigma V^T$$\n    ここで、$U$ と $V$ は変換変換矩阵、$\\Sigma$ は低秩な変換変",
+      "passed": false,
+      "abstained": false,
+      "keyword_groups_matched": [
+        false,
+        false,
+        true
+      ],
+      "seconds": 9.613662700052373,
+      "generated_tokens": 192,
+      "hit_token_limit": true
+    },
+    {
+      "id": "canonical-qlora",
+      "category": "canonical",
+      "question": "QLoRAの意味を、AIE2026の用語集に沿って教えてください。",
+      "term_id": "qlora",
+      "reference": "ベースモデルの重みを4ビットなどに量子化してメモリを節約したうえで、LoRAで学習する手法。より大きなモデルを小さなGPUで扱える。本講座の第2回演習ではモデルがGPUに載るためLoRAで学習し、4ビットで読み込んだときのメモリと出力の違いを発展で比べる。",
+      "raw": "AIE2026 の用語集では、**QLoRA**（Quantized Large Language Model）という用語は記載されていません。\n\nAIE2026 の用語集では、**「QLoRA」という用語は記載されていません**。\n\nAIE2026 の用語集では、**「QLoRA」という用語は記載されていません**。\n\nAIE2026 の用語集では、**「QLoRA」という用語は記載されていません**。\n\nAIE2026 の用語集では、**「QLoRA」という用語は記載されていません**。\n\nAIE2026 の用語集では、**「QLoRA」という用語は記載されていません**。\n\nAIE2026 の用語集では、**「QLoRA」という用語は記載されていません**。\n\nAIE2026 の用語集では、",
+      "passed": false,
+      "abstained": true,
+      "keyword_groups_matched": [
+        false,
+        false,
+        true
+      ],
+      "seconds": 9.721950399922207,
+      "generated_tokens": 192,
+      "hit_token_limit": true
+    },
+    {
+      "id": "paraphrase-qlora",
+      "category": "paraphrase",
+      "question": "元の重みを4ビットで保持し、小さい追加行列だけを学習する方式は何をするものですか。",
+      "term_id": "qlora",
+      "reference": "ベースモデルの重みを4ビットなどに量子化してメモリを節約したうえで、LoRAで学習する手法。より大きなモデルを小さなGPUで扱える。本講座の第2回演習ではモデルがGPUに載るためLoRAで学習し、4ビットで読み込んだときのメモリと出力の違いを発展で比べる。",
+      "raw": "元の重みを 4 ビットで保持し、小さい追加行列だけを学習する方式は、**「小規模学習（Small-Scale Learning）」**または**「小規模化学習（Small-Scale Learning）」**と呼ばれます。\n\nこのアプローチは、大規模学習（Large-Scale Learning）の計算コストやメモリ使用量に制限がかかる場合、特に以下の理由で採用されるのが一般的です。\n\n1.  **計算コストの削減**: 元の重みを 4 ビットで保持するため、学習データセットのサイズが小さくなり、計算の処理量（パラメータの増分）が大幅に減少します。\n2.  **メモリ使用量の削減**: 学習データセットのサイズが小さくなるため、メモリへの消費も劇的に減ります。\n3.  **学習の安定性**: 学習データセットのサイズが小さくなることで、学習の不安定さ（バ",
+      "passed": false,
+      "abstained": false,
+      "keyword_groups_matched": [
+        true,
+        true,
+        false
+      ],
+      "seconds": 12.081444400013424,
+      "generated_tokens": 192,
+      "hit_token_limit": true
+    },
+    {
+      "id": "canonical-rate-limit",
+      "category": "canonical",
+      "question": "レート制限の意味を、AIE2026の用語集に沿って教えてください。",
+      "term_id": "rate-limit",
+      "reference": "一定時間あたりに呼び出せるリクエスト数やトークン数の上限。超えるとHTTP 429などのエラーが返る。無料枠は特に制限が厳しく、エージェントは1つの質問で複数回LLMを呼ぶため上限に達しやすい。",
+      "raw": "AIE2026 の用語集では、「レート制限」という用語は記載されていません。\n\nAIE2026 は、AI（人工知能）の分野で非常に重要なプロジェクトであり、その開発には「レート制限」という概念が深く関わっています。\n\nAIE2026 の用語集では、以下の点に焦点を当てています：\n*   **AI の学習と生成プロセス**：モデルが学習する際に、入力データに対して一定の時間や回数で処理を行う仕組み。\n*   **安全性と信頼性**：生成されたコンテンツが誤った情報や有害な内容に偏らないための仕組み。\n*   **倫理的なガイドライン**：AI の使用や生成において、人権や倫理を尊重する基準。\n\nAIE2026 の用語集では、以下の点に焦点を当てています：\n*   **AI の学習と",
+      "passed": false,
+      "abstained": true,
+      "keyword_groups_matched": [
+        false,
+        true,
+        false
+      ],
+      "seconds": 12.625659499899484,
+      "generated_tokens": 192,
+      "hit_token_limit": true
+    },
+    {
+      "id": "paraphrase-rate-limit",
+      "category": "paraphrase",
+      "question": "一定時間にAPIへ送れる要求数の上限と、それを超えたときの挙動を説明してください。",
+      "term_id": "rate-limit",
+      "reference": "一定時間あたりに呼び出せるリクエスト数やトークン数の上限。超えるとHTTP 429などのエラーが返る。無料枠は特に制限が厳しく、エージェントは1つの質問で複数回LLMを呼ぶため上限に達しやすい。",
+      "raw": "AIE2026 の用語集に基づき、API への送れる要求数の上限（レート制限）と、その超過時の挙動について説明します。\n\n### 1. 要求数の上限（Rate Limit）とは\n\nAPI 側がユーザーやアプリケーションに対して「この時間範囲内での、このサービスにアクセスできる最大数のリクエスト」を制限する仕組みです。\n\n*   **定義**: 特定の時間単位（例：1 分、1 日、1 週間）内、特定のサービス（例：ユーザー登録、データ取得、画像アップロード）に対して、最大 **N** 件のリクエストを許容します。\n*   **目的**:\n    *   サーバーの負荷を管理し、パフォーマンスを維持する。\n    *   利用者の数を制限し、サービスの信頼性を保つ。\n    *   特定のユーザーやアプリケーションに対して、過剰",
+      "passed": false,
+      "abstained": false,
+      "keyword_groups_matched": [
+        true,
+        true,
+        false
+      ],
+      "seconds": 11.972724599996582,
+      "generated_tokens": 192,
+      "hit_token_limit": true
+    },
+    {
+      "id": "canonical-api-key",
+      "category": "canonical",
+      "question": "APIキーの意味を、AIE2026の用語集に沿って教えてください。",
+      "term_id": "api-key",
+      "reference": "APIを呼び出す人を識別するための秘密の文字列。漏れると他人に利用枠を使われるため、コードに直接書かない、コミットしない、チャットに貼らない。本講座ではCodespaces secretに登録し、環境変数 GEMINI_API_KEY として読み込む。",
+      "raw": "AIE2026 の用語集に基づき、API キーの定義と仕組みを解説します。\n\nAIE2026 の用語集では、**「API キー（Application API Key）」**とは、特定のサービス（例：Google Cloud、AWS、Azure、または特定の AI プラットフォーム）にアクセスするための、ユーザーが設定する一意の認証コードです。\n\nこのキーは、以下の 3 つの要素から構成されます。\n\n1.  **認証コード（Authentication Code）**\n    *   単一の、ランダムな文字列です。\n    *   設定されたサービスにアクセスする際に、このコードを提出します。\n    *   設定されたサービスにアクセスする際に、このコードを提出します。\n\n2.  **アクセス権限（Access Permissions）**\n    *   特定のサービスにアクセスする際に、このコードを提出します。\n    *",
+      "passed": false,
+      "abstained": false,
+      "keyword_groups_matched": [
+        false,
+        true,
+        false
+      ],
+      "seconds": 12.262644700007513,
+      "generated_tokens": 192,
+      "hit_token_limit": true
+    },
+    {
+      "id": "paraphrase-api-key",
+      "category": "paraphrase",
+      "question": "APIを呼び出す利用者を識別する秘密の文字列は、どう管理するものですか。",
+      "term_id": "api-key",
+      "reference": "APIを呼び出す人を識別するための秘密の文字列。漏れると他人に利用枠を使われるため、コードに直接書かない、コミットしない、チャットに貼らない。本講座ではCodespaces secretに登録し、環境変数 GEMINI_API_KEY として読み込む。",
+      "raw": "AIE2026 の用語集に基づき、API を呼び出す利用者を識別する秘密の文字列（通常は「API Key」や「Secret Token」など）を管理する仕組みについて、以下の通り説明します。\n\n**用語集に記載がないため確認が必要です**\n\nAPI を呼び出す利用者を識別する秘密の文字列は、**「API Key（API キー）」**または**「Secret Token（秘密トークン）」**と呼ばれます。\n\nこの秘密の文字列は、以下の点で管理されます：\n\n1.  **管理方法**：\n    *   **暗号化**：秘密の文字列は、物理的な保管（物理的な鍵）ではなく、**暗号化された形式**（例：RSA 暗号化、AES 暗号化など）で保管されます。\n    *   **認証**：API 呼び出し時に、この暗号化",
+      "passed": false,
+      "abstained": true,
+      "keyword_groups_matched": [
+        true,
+        true,
+        true
+      ],
+      "seconds": 11.533664199989289,
+      "generated_tokens": 192,
+      "hit_token_limit": true
+    },
+    {
+      "id": "canonical-context-window",
+      "category": "canonical",
+      "question": "コンテキストウィンドウの意味を、AIE2026の用語集に沿って教えてください。",
+      "term_id": "context-window",
+      "reference": "LLMが1回の呼び出しで扱える入力と出力の合計トークン数の上限。会話履歴やツールの結果もこの中に収める必要があるため、何をモデルに渡すかの設計が重要になる。",
+      "raw": "AIE2026 の用語集では、「コンテキストウィンドウ」という用語は記載されていません。\n\nAIE2026 の用語集では、**「コンテキストウィンドウ」という用語は記載されていません**。\n\nAIE2026 の用語集では、**「コンテキストウィンドウ」という用語は記載されていません**。\n\nAIE2026 の用語集では、**「コンテキストウィンドウ」という用語は記載されていません**。\n\nAIE2026 の用語集では、**「コンテキストウィンドウ」という用語は記載されていません**。\n\nAIE2026 の用語集では、**「コンテキストウィンドウ」という用語は記載されていません**。\n\nAIE2026 の用語集では、**「コンテキストウィンドウ」という用語は記載されていません**。\n\nAIE202",
+      "passed": false,
+      "abstained": true,
+      "keyword_groups_matched": [
+        false,
+        false,
+        false,
+        false
+      ],
+      "seconds": 13.854652300011367,
+      "generated_tokens": 192,
+      "hit_token_limit": true
+    },
+    {
+      "id": "paraphrase-context-window",
+      "category": "paraphrase",
+      "question": "一度の呼び出しで扱える入力と出力の合計量には、どのような制約がありますか。",
+      "term_id": "context-window",
+      "reference": "LLMが1回の呼び出しで扱える入力と出力の合計トークン数の上限。会話履歴やツールの結果もこの中に収める必要があるため、何をモデルに渡すかの設計が重要になる。",
+      "raw": "AIE2026 の用語集に基づき、一度の呼び出しで扱える入力と出力の合計量には、以下の制約があります。\n\n**用語集に記載がないため確認が必要です**",
+      "passed": false,
+      "abstained": true,
+      "keyword_groups_matched": [
+        true,
+        true,
+        false,
+        false
+      ],
+      "seconds": 3.2464160000672564,
+      "generated_tokens": 45,
+      "hit_token_limit": false
+    },
+    {
+      "id": "canonical-homework-levels",
+      "category": "canonical",
+      "question": "宿題の3レベルの意味を、AIE2026の用語集に沿って教えてください。",
+      "term_id": "homework-levels",
+      "reference": "AIE2026の宿題の構成。「基礎（講義内容の確認）」「実装（自分でコードを書く）」「発展（調査や試行）」の3段階があり、どれか1つに取り組めばその回の宿題は完了。原則として採点はしない。",
+      "raw": "AIE2026（AI 教育・研究・研究支援）の用語集に基づき、宿題の 3 段階（レベル）の意味を解説します。\n\nAIE2026 の学習モデルでは、学習者が単に知識を吸収するだけでなく、**「AI を活用して課題を解決する能力」**を育成する仕組みです。この 3 段階は、学習の進捗や成果を評価する際の基準として採用されています。\n\n---\n\n### 1 段階：学習者（学習者）\n**意味**\n学習者が、AI を活用して課題を解決する**「学習者」**です。\nこの段階では、学習者が AI を直接操作したり、AI の出力を分析したり、AI を活用した結果を生成したりするプロセスが含まれます。\n*   **特徴**: 学習者が AI を「使う」状態です。\n*   **評価",
+      "passed": false,
+      "abstained": false,
+      "keyword_groups_matched": [
+        false,
+        false,
+        false,
+        false
+      ],
+      "seconds": 11.646385200088844,
+      "generated_tokens": 192,
+      "hit_token_limit": true
+    },
+    {
+      "id": "paraphrase-homework-levels",
+      "category": "paraphrase",
+      "question": "AIE2026で基礎・実装・発展のうちいくつ取り組めばよいのか、段階の構成も説明してください。",
+      "term_id": "homework-levels",
+      "reference": "AIE2026の宿題の構成。「基礎（講義内容の確認）」「実装（自分でコードを書く）」「発展（調査や試行）」の3段階があり、どれか1つに取り組めばその回の宿題は完了。原則として採点はしない。",
+      "raw": "AIE2026（AI 教育・研究・開発）における「基礎・実装・発展」の段階を踏まえた、AIE2026 の用語集に沿って解説します。\n\nAIE2026 は、単なる技術の羅列ではなく、**「基礎の確立 → 実装の精度向上 → 発展の適用」**という一貫した進路を重視する教育・研究モデルです。\n\n### 1. 段階の構成と進路図\n\nAIE2026 の基本構成は以下の通りです。\n\n*   **ステップ 1: 基礎（Foundation）**\n    *   **目的**: 技術の根幹を確立し、汎用性や安全性を確保する。\n    *   **内容**: 言語モデルの基礎知識、データ処理の基礎、セキュリティの基礎、AI 倫理の基礎",
+      "passed": false,
+      "abstained": false,
+      "keyword_groups_matched": [
+        true,
+        true,
+        true,
+        false
+      ],
+      "seconds": 10.84854230005294,
+      "generated_tokens": 192,
+      "hit_token_limit": true
+    },
+    {
+      "id": "canonical-answer-md",
+      "category": "canonical",
+      "question": "answer.mdの意味を、AIE2026の用語集に沿って教えてください。",
+      "term_id": "answer-md",
+      "reference": "AIE2026で各回の演習・宿題の結果を書くファイル。lectures/NN/answer.md にあり、取り組んだレベル・やったこと・結果・気づきを記入して、作業ブランチから自分のforkの main へPRを出して提出する。",
+      "raw": "AIE2026（AI 2026）の用語集に沿って、**「answer.md」**の定義と意味を解説します。\n\nAIE2026 は、AI 技術の進化を加速させるための「AI 2026 年」のプロジェクトです。このプロジェクトの主要な目標は、AI の**「回答（Answer）」**能力を大幅に向上させることです。\n\n### 1. 用語集の定義\n**「answer.md」**は、AIE2026 のプロジェクトの**「回答（Answer）」**能力を向上させるための**「AI 2026 年」のプロジェクト**です。\n\nこのプロジェクトは、従来の AI 技術（例えば、自然言語処理や機械学習）をベースに、より**「回答（Answer）」**という概念を重視した新しいアプローチを推進します。\n\n### 2.",
+      "passed": false,
+      "abstained": false,
+      "keyword_groups_matched": [
+        true,
+        false,
+        false
+      ],
+      "seconds": 11.510614600032568,
+      "generated_tokens": 192,
+      "hit_token_limit": true
+    },
+    {
+      "id": "paraphrase-answer-md",
+      "category": "paraphrase",
+      "question": "AIE2026の解答ファイルの置き場所と、提出方法を教えてください。",
+      "term_id": "answer-md",
+      "reference": "AIE2026で各回の演習・宿題の結果を書くファイル。lectures/NN/answer.md にあり、取り組んだレベル・やったこと・結果・気づきを記入して、作業ブランチから自分のforkの main へPRを出して提出する。",
+      "raw": "AIE2026（アイルランド・イギリス・アメリカ・ヨーロッパ・アジア・オーストラリア・アジア太平洋地域）の解答ファイルの置き場所と提出方法について、AIE2026の用語集に基づいてご説明します。\n\nAIE2026の用語集に記載がないため、以下の手順で確認・提出してください。\n\n### 1. 解答ファイルの置き場所\n解答ファイルは、以下のいずれかの場所に保存されます。\n\n*   **AIE2026 公式ウェブサイト**\n    *   公式ウェブサイトから「解答ファイル」または「Answer Key」をダウンロードする。\n    *   公式ウェブサイトから「解答ファイル」をダウンロードする。\n    *   公式ウェブサイトから「解答ファイル」をダウンロードする。\n    *   公式ウェブサイトから「解答ファイル」をダウンロードする。\n    *   公式ウェブサイトから「",
+      "passed": false,
+      "abstained": true,
+      "keyword_groups_matched": [
+        false,
+        false,
+        false
+      ],
+      "seconds": 13.041078499983996,
+      "generated_tokens": 192,
+      "hit_token_limit": true
+    },
+    {
+      "id": "canonical-lec-start-tag",
+      "category": "canonical",
+      "question": "lecNN-start タグの意味を、AIE2026の用語集に沿って教えてください。",
+      "term_id": "lec-start-tag",
+      "reference": "AIE2026の講座repoで、各回の演習開始時点のコードに付けているGitタグ（例：lec03-start）。前の回が終わっていなくても、このタグからブランチを作ればその回の演習を始められる。",
+      "raw": "AIE2026 の用語集に基づき、**lecNN-start** タグの意味を説明します。\n\nAIE2026 の用語集では、このタグは主に**「学習開始（または初期化）」**という概念を指します。具体的には、モデルの学習プロセスにおいて、学習開始信号（Learning Start Signal）が送られる瞬間、または学習開始信号が設定された瞬間に、モデルが「学習を開始する」という意味で記述されます。\n\nこのタグは、モデルの初期状態や学習開始のタイミングを明確に示すために使用されます。\n\n**用語集に記載がないため確認が必要です**",
+      "passed": false,
+      "abstained": true,
+      "keyword_groups_matched": [
+        false,
+        true,
+        false
+      ],
+      "seconds": 8.5865102999378,
+      "generated_tokens": 138,
+      "hit_token_limit": false
+    },
+    {
+      "id": "paraphrase-lec-start-tag",
+      "category": "paraphrase",
+      "question": "講座の開始タグは何のためにあり、前の回が終わっていない場合にどう役立ちますか。",
+      "term_id": "lec-start-tag",
+      "reference": "AIE2026の講座repoで、各回の演習開始時点のコードに付けているGitタグ（例：lec03-start）。前の回が終わっていなくても、このタグからブランチを作ればその回の演習を始められる。",
+      "raw": "AIE2026の講座開始タグは、**「前の回が終わっていない場合に、受講者が次の回へスムーズに移動するための指示」**という役割を果たします。\n\n具体的には以下の 3 つの目的があります。\n\n1.  **次の回の開始を指示する**\n    講座の開始タグは、受講者が「この回が終わった」という状態であることを確認し、次の回へ移動するための明確な信号となります。\n\n2.  **次の回の開始を指示する**\n    講座の開始タグは、受講者が「この回が終わった」という状態であることを確認し、次の回へ移動するための明確な信号となります。\n\n3.  **次の回の開始を指示する**\n    講座の開始タグは、受講者が「この回が終わった」という状態であることを確認し、次の回へ移動するための明確な信号となります。\n\n**用語集に記載がないため確認が必要です**",
+      "passed": false,
+      "abstained": true,
+      "keyword_groups_matched": [
+        false,
+        true,
+        false
+      ],
+      "seconds": 12.006796199944802,
+      "generated_tokens": 192,
+      "hit_token_limit": true
+    },
+    {
+      "id": "canonical-default-model",
+      "category": "canonical",
+      "question": "既定モデルの意味を、AIE2026の用語集に沿って教えてください。",
+      "term_id": "default-model",
+      "reference": "AIE2026の演習と宿題で標準に使うモデルは gemini-3.5-flash-lite。無料枠のレート制限と講座運営の安定性を考えて選んでいる。環境変数 AIE_MODEL で他のモデルに切り替えてよく、自分で契約したAPIを使ってもよい。",
+      "raw": "AIE2026 の用語集に基づき、「既定モデル」という用語を解説します。\n\nAIE2026 の用語集では、**「既定モデル（Fixed Model）」**とは、**「特定のデータセットや知識に基づいて、学習プロセスを完全に制御し、その結果を再現可能なモデル」**を指します。\n\nこの概念は、従来の「データ駆動型学習（Data-Driven Learning）」とは異なり、学習の根拠となる「データ」自体が固定されているため、学習アルゴリズムやパラメータの構成も事前に定義されたままです。\n\nAIE2026 の用語集では、以下の点を明確に記述しています。\n\n*   **学習の根拠**: 学習に必要な「データセット」が事前に定義されたままです。\n*   **学習の制御**: 学習アルゴリズムやパラメータの構成は、学習開始直",
+      "passed": false,
+      "abstained": false,
+      "keyword_groups_matched": [
+        false,
+        false
+      ],
+      "seconds": 12.607793799950741,
+      "generated_tokens": 192,
+      "hit_token_limit": true
+    },
+    {
+      "id": "paraphrase-default-model",
+      "category": "paraphrase",
+      "question": "AIE2026のデフォルトモデルと、それを切り替える方法を説明してください。",
+      "term_id": "default-model",
+      "reference": "AIE2026の演習と宿題で標準に使うモデルは gemini-3.5-flash-lite。無料枠のレート制限と講座運営の安定性を考えて選んでいる。環境変数 AIE_MODEL で他のモデルに切り替えてよく、自分で契約したAPIを使ってもよい。",
+      "raw": "AIE2026（AI 2026）のデフォルトモデルと切り替え方法について、AIE2026 の用語集に基づいて解説します。\n\nAIE2026 は、従来の AI 技術（特に大規模言語モデルや生成モデル）を基盤とした、より高度な AI 応用分野を推進するプロジェクトです。その中で、**「デフォルトモデル」**とは、プロジェクトの初期設定や標準的な運用において、最も一般的に使用されるモデルを指します。\n\n### 1. AIE2026 のデフォルトモデル\n\nAIE2026 の用語集では、デフォルトモデルは以下のいずれかのように定義されています。\n\n*   **AIE2026 のデフォルトモデルは、AIE2026 の用語集に記載がないため確認が必要です。**\n\n※AIE202",
+      "passed": false,
+      "abstained": true,
+      "keyword_groups_matched": [
+        false,
+        false
+      ],
+      "seconds": 13.023203999968246,
+      "generated_tokens": 192,
+      "hit_token_limit": true
+    },
+    {
+      "id": "canonical-temperature",
+      "category": "canonical",
+      "question": "temperatureの意味を、AIE2026の用語集に沿って教えてください。",
+      "term_id": "temperature",
+      "reference": "次のトークンを選ぶときのランダムさを調整する設定値。低いほど出力が安定し、高いほど多様になる。同じ質問でも回答が変わる理由の一つ。",
+      "raw": "AIE2026 の用語集では、**「温度（Temperature）」**という用語は記載されていません。\n\nAIE2026 の用語集は、主に「AIE2026」の特定分野（おそらく航空・宇宙・医療・エネルギーなど）の専門用語を定義し、その分野における温度の概念や関連用語を解説するものです。\n\nAIE2026 の用語集には、以下の分野や用語が記載されている可能性がありますが、その中で「温度」の定義や関連する用語は明確に記載されていません。\n\nしたがって、AIE2026 の用語集に記載がないため、**「用語集に記載がないため確認が必要です」**と答えます。\n\nもし AIE2026 の用語集に「温度」の定義や関連する用語が含まれている場合は、その内容をご提供いただければ、その分野における温度の概念を詳しく説明",
+      "passed": false,
+      "abstained": true,
+      "keyword_groups_matched": [
+        false,
+        false,
+        false
+      ],
+      "seconds": 13.598489900003187,
+      "generated_tokens": 192,
+      "hit_token_limit": true
+    },
+    {
+      "id": "paraphrase-temperature",
+      "category": "paraphrase",
+      "question": "温度パラメータを低くしたときと高くしたときの違いは何ですか。",
+      "term_id": "temperature",
+      "reference": "次のトークンを選ぶときのランダムさを調整する設定値。低いほど出力が安定し、高いほど多様になる。同じ質問でも回答が変わる理由の一つ。",
+      "raw": "温度パラメータを低くしたときと高くしたときの違いは、主に**分子の運動の強さ**や**分子間の距離**に依存します。\n\n以下に、温度パラメータの定義と、低くした場合と高くした場合の具体的な違いを解説します。\n\n### 温度パラメータの定義\n温度は、分子の平均運動エネルギーを表す物理量です。温度が高いほど、分子がより高速に振動し、運動エネルギーが大きいのです。\n\n### 温度パラメータを低くした場合\n温度パラメータを低くすると、分子の運動エネルギーが減少します。\n*   **分子の動き**: 分子がよりゆっくりと振動し、運動速度が低下します。\n*   **分子間距離**: 分子がより近くなったり、遠くなったりする可能性がありますが、一般的には分子間の平均距離が**小さくなる**",
+      "passed": false,
+      "abstained": false,
+      "keyword_groups_matched": [
+        false,
+        true,
+        true
+      ],
+      "seconds": 12.642472399980761,
+      "generated_tokens": 192,
+      "hit_token_limit": true
+    },
+    {
+      "id": "absent-0",
+      "category": "absent",
+      "question": "AIE2026の用語集でいう「DPO」を説明してください。",
+      "term_id": null,
+      "reference": "用語集に記載がないため確認が必要です。",
+      "raw": "AIE2026 の用語集では、「DPO」という用語は**記載されていません**。\n\nAIE2026 は、AI（人工知能）の分野で非常に重要な概念の一つですが、その定義や詳細は AIE2026 の公式用語集や、関連する論文、研究発表、および AIE2026 の公式ドキュメント（ドキュメント）に詳細に記載されています。\n\nしたがって、AIE2026 の用語集に記載がないため、**「用語集に記載がないため確認が必要です」**と答えます。\n\nもし AIE2026 の公式ドキュメントや関連する論文で「DPO」という言葉が定義されている場合、その定義を確認してください。",
+      "passed": true,
+      "abstained": true,
+      "keyword_groups_matched": [],
+      "seconds": 10.931774399941787,
+      "generated_tokens": 160,
+      "hit_token_limit": false
+    },
+    {
+      "id": "absent-1",
+      "category": "absent",
+      "question": "AIE2026の用語集でいう「PPO」を説明してください。",
+      "term_id": null,
+      "reference": "用語集に記載がないため確認が必要です。",
+      "raw": "AIE2026 の用語集では、**「PPO（Proximal Policy Optimization）」**という用語は記載されていません。\n\nAIE2026 の用語集では、**「PPO（Proximal Policy Optimization）」**という用語は記載されていません。\n\nAIE2026 の用語集では、**「PPO（Proximal Policy Optimization）」**という用語は記載されていません。\n\nAIE2026 の用語集では、**「PPO（Proximal Policy Optimization）」**という用語は記載されていません。\n\nAIE2026 の用語集では、**「PPO（Proximal Policy Optimization）」**という用語は記載されていません。\n\nAIE2026 の用語集では、**「PPO（Proximal Policy Optimization）」**という用語は記載されていません。\n\nAIE2026",
+      "passed": true,
+      "abstained": true,
+      "keyword_groups_matched": [],
+      "seconds": 11.220706499996595,
+      "generated_tokens": 192,
+      "hit_token_limit": true
+    },
+    {
+      "id": "absent-2",
+      "category": "absent",
+      "question": "AIE2026の用語集でいう「RLAIF」を説明してください。",
+      "term_id": null,
+      "reference": "用語集に記載がないため確認が必要です。",
+      "raw": "AIE2026 の用語集では、**「RLAIF」**という用語は記載されていません。\n\nAIE2026 は、2026 年（令和 8 年）に開催される「AI 教育・研究・技術」に関する国際的な大会（または関連するイベント）であり、その用語集には「RLAIF」という特定の用語は存在しません。\n\nしたがって、AIE2026 の用語集に記載がないため、**「用語集に記載がないため確認が必要です」**と回答します。\n\nもし「RLAIF」が何か特定の技術や概念を指している場合は、その具体的な定義や背景をさらに詳しく教えていただければ、より正確に説明できます。",
+      "passed": true,
+      "abstained": true,
+      "keyword_groups_matched": [],
+      "seconds": 8.452194199897349,
+      "generated_tokens": 156,
+      "hit_token_limit": false
+    },
+    {
+      "id": "absent-3",
+      "category": "absent",
+      "question": "AIE2026の用語集でいう「Mixture of Experts」を説明してください。",
+      "term_id": null,
+      "reference": "用語集に記載がないため確認が必要です。",
+      "raw": "AIE2026 の用語集では、「Mixture of Experts（MOE）」という用語は**記載されていません**。\n\nAIE2026 の用語集は、AI（Artificial Intelligence）分野の最新トレンドや技術用語を整理したものであり、特定の分野（例えば、医療、金融、教育など）の専門用語集として機能しているため、一般的な AI 用語集（例えば、Google の AI 用語集や Microsoft の AI 用語集など）に載っていない可能性が高いです。\n\nしたがって、AIE2026 の用語集に載っていない「Mixture of Experts」について、以下の理由で確認が必要です。\n\n*   **用語集の範囲の制限**: AIE2026 の用語集は、特定の分野（例：医療 AI、教育 AI、金融 AI など）の専門用語を扱っており、一般的な AI 用語集（Google AI",
+      "passed": true,
+      "abstained": true,
+      "keyword_groups_matched": [],
+      "seconds": 11.041572500020266,
+      "generated_tokens": 192,
+      "hit_token_limit": true
+    },
+    {
+      "id": "absent-4",
+      "category": "absent",
+      "question": "AIE2026の用語集でいう「ベクトルデータベース」を説明してください。",
+      "term_id": null,
+      "reference": "用語集に記載がないため確認が必要です。",
+      "raw": "AIE2026 の用語集では、「ベクトルデータベース」という用語は**記載されていません**。\n\nAIE2026 の用語集は、主に「AIE2026」の定義や、その分野（おそらく AI 技術、特に大規模言語モデルや機械学習の分野）に関する用語を整理したものです。\n\nAIE2026 の用語集には、以下のような用語が記載されています：\n*   AIE2026\n*   大規模言語モデル\n*   機械学習\n*   自然言語処理\n*   生成式 AI\n*   大規模言語モデル\n*   機械学習\n*   自然言語処理\n*   生成式 AI\n*   大規模言語モデル\n*   機械学習\n*   自然言語処理\n*   生成式 AI\n*   大",
+      "passed": true,
+      "abstained": true,
+      "keyword_groups_matched": [],
+      "seconds": 10.8047751999693,
+      "generated_tokens": 192,
+      "hit_token_limit": true
+    },
+    {
+      "id": "absent-5",
+      "category": "absent",
+      "question": "AIE2026の用語集でいう「修了証発行手数料」を説明してください。",
+      "term_id": null,
+      "reference": "用語集に記載がないため確認が必要です。",
+      "raw": "AIE2026 の用語集では、「修了証発行手数料」という用語は記載されていません。\n\nAIE2026 の用語集では、修了証（修了証明書）の発行に関する具体的な手数料や、その仕組みについて詳細な説明は記載されていません。\n\nそのため、この用語については「用語集に記載がないため確認が必要です」と回答します。\n\nもし、修了証の発行について知りたい場合は、AIE2026 の「修了証に関する情報」や「修了証の発行・管理に関する情報」などの関連項目を参照してください。",
+      "passed": true,
+      "abstained": true,
+      "keyword_groups_matched": [],
+      "seconds": 7.721064000041224,
+      "generated_tokens": 128,
+      "hit_token_limit": false
+    }
+  ]
+}
