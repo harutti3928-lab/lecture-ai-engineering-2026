@@ -1,0 +1,14 @@
+{
+  "executed_at": "2026-10-30T17:05:42.985994+09:00",
+  "api": "interactions.create",
+  "model": "models/gemini-3.8-flash",
+  "input": "Reply with just OK.",
+  "generation_config": {
+    "max_output_tokens": 65536,
+    "thinking_level": "medium"
+  },
+  "status": "error",
+  "error_type": "APITimeoutError",
+  "message": "Request timed out. This is a client-side timeout. You can increase the timeout by setting the `timeout` argument on your request or in the client http options.",
+  "elapsed_seconds": 68.446
+}
