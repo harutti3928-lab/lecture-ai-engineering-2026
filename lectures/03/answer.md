@@ -302,7 +302,185 @@ agent.tool_plain(tools.make_quiz)
 
 ## 宿題
 
-- 取り組んだレベル：基礎 / 実装 / 発展
-- やったこと：
-- 結果：
-- 気づき・疑問：
+### 基礎：ツールの説明文を変えて比較する
+
+#### やったこと・比較条件
+
+宿題資料1〜2ページに沿って、[`app/tools.py`](../../app/tools.py)の`search_glossary`のdocstringを1か所だけ変更し、同じ質問を`--trace`付きで実行した。
+
+変更前：
+
+```text
+答える前に使うこと。query には調べたい用語を1つだけ入れる（例: "LoRA"）。
+```
+
+変更後：
+
+```text
+答える前に使うこと。query には調べたい用語をまとめて入れる（例: "LoRAとQLoRA"）。
+```
+
+2026-11-09に両条件を各1回実行した。質問は「LoRAとQLoRAの違いは？」、モデルは`gemini-3.5-flash-lite`、環境は既存のPython 3.12.13。`INSTRUCTIONS`、検索関数の処理、用語集、ツール構成（`make_quiz`を含む3個）は変えていない。新しいプロセスから起動し、会話履歴は引き継いでいない。生成設定やseedは追加指定していない。
+
+演習③の時点では`make_quiz`が未登録だったため、その記録をそのまま比較対象にせず、現在の3ツール構成で変更前条件も取り直した。実行コマンドは両方とも同じである。
+
+```powershell
+.venv/Scripts/python.exe -X utf8 -m app.agent --trace "LoRAとQLoRAの違いは？"
+```
+
+両方とも正常終了した。回答・trace・実際のdocstring・日時・終了コードは[変更前](results/homework_basic_before.json)と[変更後](results/homework_basic_after.json)に保存した。以下の数値は今回の実行結果であり、教材に記載された例の数値ではない。
+
+#### 結果：検索が2回から1回に変わった
+
+変更前の呼び出し：
+
+```text
+[tool call]   search_glossary({'query': 'LoRA'})
+[tool call]   search_glossary({'query': 'QLoRA'})
+```
+
+変更後の呼び出し：
+
+```text
+[tool call]   search_glossary({'query': 'LoRA QLoRA'})
+```
+
+- 変更前：`requests=2, tool_calls=2`、入力1,368トークン、出力166トークン。
+- 変更後：`requests=2, tool_calls=1`、入力1,065トークン、出力193トークン。
+
+「まとめて入れる」という説明に変えると、今回のモデルは実際に2用語を1つの引数にまとめた。ただし、docstringの例文`LoRAとQLoRA`をそのまま使ったのではなく、空白区切りの`LoRA QLoRA`を選んだ。
+
+LLMの呼び出し回数は変わらなかった。変更前も最初のモデル応答で2つの検索を依頼していたため、どちらも「検索を依頼するモデル呼び出し → ツール実行 → 結果を読んで答えるモデル呼び出し」の2回だった。入力トークンは減ったが出力トークンは増えており、1回ずつの結果から費用や速度が常に改善するとまでは言えない。
+
+#### 最終回答の比較
+
+変更前の回答は、LoRAを「重みを固定し、小さな行列（アダプタ）だけを学習する手法」、QLoRAを「ベースモデルを量子化してメモリを抑えたうえでLoRAによる学習を行う手法」と説明し、「関係する回：第2回」で終わった。
+
+変更後の回答も同じ違いを説明し、「Low-Rank Adaptation」「Quantized LoRA」という英語名や、学習パラメータ数・保存ファイルサイズの削減について説明を加え、「（第2回）」で終わった。表現や詳しさには違いがあるが、今回の観察では中心となる説明は維持された。回答全文は上記JSONに保存している。英語名などを含む文面全体を独立に採点した実験ではない。
+
+#### なぜまとめた検索でも結果が返ったのか
+
+`--trace`の`[tool return]`は先頭120文字で省略される。その表示だけで全文を断定せず、実験後に同じ関数を`search_glossary("LoRA QLoRA")`で直接呼んだところ、LoRAとQLoRAの両方の定義が返った。[直接確認の記録](results/homework_basic_search_check.json)に全文を保存した。これはモデル実行時の返り値全文を取得したものではなく、その後のローカル関数による確認である。
+
+関連する処理は`app/tools.py`の次の箇所である（抜粋）。
+
+```python
+def _normalize(text: str) -> str:
+    return text.casefold().replace(" ", "").replace("　", "")
+```
+
+```python
+partial = [
+    e for e in glossary
+    if e not in exact and any(q in n or (len(n) >= 3 and n in q) for n in _names(e))
+]
+```
+
+`LoRA QLoRA`は正規化で`loraqlora`になり、その中に用語名`lora`と`qlora`が含まれるため、部分一致で両方が候補になった。説明文を変えたことで複数語を構造的に分解する処理が追加されたわけではなく、既存の部分一致がこの質問に対応できたということになる。検索は最大3件なので、別の用語の組み合わせや、多数の用語をまとめた場合にも適切な結果がそろうとは限らない。
+
+#### 気づき・疑問
+
+ツールのdocstringは単なる開発者向けコメントではなく、モデルのツール選択や引数の作り方に関係する指示である。今回、実行処理を変更せず説明文だけを変えたところ、観測された検索の回数と引数が変わった。
+
+一方、docstringを変えても関数の能力や制限は変わらない。モデルへ渡す説明と実装の対応を確認する必要がある。また、各条件1回だけなので、変更が常に同じ効果を生むという証明ではない。複数回の再実行や別の質問でも同じ傾向かは未検証である。
+
+現時点の`app/tools.py`には変更後のdocstringを残している。以下の発展(a)も同じ説明文を使って比較する。実装レベルは実施していない。
+
+### 発展(a)：同じ指示とツールをGoogle ADKで組み立てる
+
+#### やったことと目的
+
+宿題資料3ページに沿って、エージェントを組み立てる部分をGoogle ADKで書き、`adk run`で動かした。モデルを学習し直したり、検索関数を作り直したりする課題ではなく、同じ指示と道具を別のフレームワークで使い、コードの書き方と回答を比較する課題である。
+
+新しく作成したファイル：
+
+- [`adk_agent/glossary_agent/agent.py`](../../adk_agent/glossary_agent/agent.py)：ADKのエージェント定義。
+- [`adk_agent/glossary_agent/__init__.py`](../../adk_agent/glossary_agent/__init__.py)：`from . import agent`の1行。
+- [`adk_agent/README.md`](../../adk_agent/README.md)：このPCでの起動手順と比較方法。
+
+発展のために`app/`のファイルは変更していない。`INSTRUCTIONS`と、`search_glossary`・`get_lecture_summary`・演習で追加した`make_quiz`をそのままインポートした。指示の値とツール関数オブジェクトが元のものと一致することも、APIなしの確認で確かめた。
+
+#### コードの書き方の違い
+
+既存のPydantic AI版（`app/agent.py`、抜粋）：
+
+```python
+agent = Agent(instructions=INSTRUCTIONS)
+agent.tool_plain(tools.search_glossary)
+agent.tool_plain(tools.get_lecture_summary)
+agent.tool_plain(tools.make_quiz)
+```
+
+ADK版（`adk_agent/glossary_agent/agent.py`）：
+
+```python
+from google.adk.agents import Agent
+
+from app import tools
+from app.agent import INSTRUCTIONS
+from app.config import MODEL
+
+root_agent = Agent(
+    model=MODEL,
+    name="glossary_agent",
+    instruction=INSTRUCTIONS,
+    tools=[tools.search_glossary, tools.get_lecture_summary, tools.make_quiz],
+)
+```
+
+Pydantic AIでは`instructions=`で全体指示を渡し、`tool_plain()`で関数を登録する。ADKでは`instruction=`と`tools=[...]`をまとめて渡し、CLIが読み込む`root_agent`として定義する。モデルは教材の文字列を重複記載する代わりに`app.config.MODEL`を参照し、両版で同じ設定を使うようにした。
+
+実行部分も、既存版では自作CLIから`target.run_sync(...)`を呼ぶのに対し、ADK版では`adk run`が実行ループを担う。どちらも、関数そのものはプログラム側で実行し、その結果をモデルに戻す。フレームワークのハーネス部分を替えても、指示とツールの実装を共有できた。
+
+#### 実行環境・コマンド
+
+2026-11-09にこのWindows PCで実行した。既存環境を再同期しないため、教材の`uv run --with google-adk`に`--no-sync`を追加した。ADKは一時環境へ導入し、導入後に確認したバージョン`2.14.0`を比較時の指定に固定した。`pyproject.toml`・`uv.lock`や既存の`.venv`への追加インストールは行っていない。
+
+比較したモデルは両方`gemini-3.5-flash-lite`、Pythonは3.12.13。ADK実行環境でも`google-genai=2.31.0`、`pydantic-ai-slim=2.57.0`であることを確認した。環境変数の`GEMINI_API_KEY`をそのまま使い、キーをファイルへ保存していない。
+
+リポジトリ直下のPowerShellで対話起動する方法：
+
+```powershell
+$env:PYTHONPATH = (Get-Location).Path
+uv run --no-sync --with google-adk==2.14.0 adk run --in_memory adk_agent/glossary_agent
+```
+
+教材の`PYTHONPATH=.`はPOSIXシェルの書き方なので、PowerShellの環境変数設定に置き換えた。比較実験では、ADKの既存CLIが対応する質問引数を使い、1問ずつ新しいプロセス・セッションで実行した。例えば次のとおり。
+
+```powershell
+uv run --no-sync --with google-adk==2.14.0 adk run --in_memory --jsonl adk_agent/glossary_agent "LoRAとQLoRAの違いは？"
+```
+
+`--in_memory`はセッションのDB保存を避ける指定、`--jsonl`はCLI既存のイベント出力を記録する指定。独自の`--trace`機能や承認付きツールは追加していない。Pydantic AI側は既存の`app.agent --trace`で実行した。
+
+#### 比較条件と結果
+
+演習で使った3問を、それぞれ両版で1回ずつ実行した。以前の出力との比較だけで済ませず、基礎課題後の同じ指示・3ツール・用語集でPydantic AI版も取り直した。履歴を持ち越さず、生成設定やseedは追加指定していない。6回すべて正常終了した。各コマンド・日時・回答全文・traceまたはADKイベントは[比較実行記録](results/homework_advanced_adk.json)に保存し、各runの`summary`にも回答と呼び出しを整理した。
+
+**1. 「AIE2026の講座の宿題にある『3レベル』とは何ですか？」**
+
+両版とも`search_glossary(query="3レベル")`を1回呼び、「基礎・実装・発展」「どれか1つで完了」「原則として採点はしない」を回答した。関連回はいずれも第1回。Pydantic AI版の「ご自身の学習状況に合わせて」といった言い回しや段落構成には違いがあるが、確認した中心的な内容は一致していた。
+
+**2. 「LoRAとQLoRAの違いは？」**
+
+両版とも`search_glossary(query="LoRA QLoRA")`を1回呼んだ。Pydantic AI版は冒頭で「ベースモデルの重みの保持方法（ビット精度）」、ADK版は「ベースモデルの重みの量子化（精度）と、それに伴うメモリ消費量」を主な違いとして説明した。
+
+どちらも、LoRAは重みを固定して追加した低ランク行列を学習し、QLoRAはベースモデルを量子化したうえでLoRAによる学習を行うと説明した。末尾にはどちらも第2回が付いた。今回の観察では検索方法と中心的な説明は共通だった。文章全体の正確性を自動採点した実験ではない。
+
+**3. 「第2回の内容から確認問題を1問出して」**
+
+両版とも`make_quiz(lecture=2)`を1回呼んだ。Pydantic AI版は「ランク（LoRAのr）」、ADK版は「PEFT」を出題した。どちらも最終回答に答え自体は表示せず、関連回として第2回を示した。
+
+出題語が違ったのはツールの`random.choice`の返り値が異なったためであり、それをフレームワークによる問題選択の違いとは解釈できない。乱数seedは固定しておらず、同一のツール結果を渡した比較ではない。
+
+**呼び出しの流れ**
+
+Pydantic AI版は全3問で`requests=2, tool_calls=1`。ADK版も各問で、モデルのツール要求イベント、関数の結果イベント、モデルの最終回答イベントが順に記録され、使用量を持つモデル応答イベントは2件だった。ADK独自の指標を`requests`として記録したのではなく、イベントから同様の流れを確認した。今回`get_lecture_summary`はどちらでも呼ばれなかったため、3ツールすべてを実APIで使用した検証ではない。
+
+#### 気づき・限界
+
+同じ指示とPython関数を使うことで、フレームワークを替えても今回の3問では似た動きを再現できた。違いが大きかったのは、指示・ツールを渡すAPIの書き方と、CLIやイベント記録など実行部分の用意の仕方である。
+
+ただし、同じ指示の文字列を渡しても、フレームワークが作るツール定義、メッセージの構成、既定設定などまで同一とは限らない。各問1回で、モデルの生成と出題には揺らぎがあるため、回答の表現差をすべてフレームワークの効果とは断定できない。この課題では速度・費用の優劣や、どちらが一般に高精度かまでは評価していない。
+
+参照した公式資料：[ADK Python Quickstart](https://adk.dev/get-started/python/)、[Command Line](https://adk.dev/runtime/command-line/)。教材の課題範囲と、上記の実行結果・このPC用の環境調整は区別して記録した。
