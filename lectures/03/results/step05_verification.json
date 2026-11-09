@@ -1,0 +1,45 @@
+{
+  "model": "gemini-3.5-flash-lite",
+  "runs": [
+    {
+      "check": "list_tools",
+      "started_at_jst": "2026-11-09T16:14:38.205804+09:00",
+      "command": [
+        "python",
+        "-m",
+        "app.agent",
+        "--list-tools"
+      ],
+      "exit_code": 0,
+      "stdout": "モデルに見えているツール: 3 個\n\n[search_glossary]\n  講座の用語集から用語を検索し、定義と、どの回で扱うかを返す。\n  \n  AIエンジニアリングの用語や、この講座（AIE2026）に固有の言葉について\n  答える前に使うこと。query には調べたい用語を1つだけ入れる（例: \"LoRA\"）。\n  引数: {\"query\": {\"type\": \"string\"}}\n\n[get_lecture_summary]\n  指定した回（1始まりの整数）の講義の要点を返す。\n  \n  「第3回では何を学ぶ？」のように、回の内容や関係を聞かれたときに使う。\n  引数: {\"lecture\": {\"type\": \"integer\"}}\n\n[make_quiz]\n  指定した回の用語から1つを選び、確認問題と答えを返す。\n  \n  「第2回の確認問題を出して」のように、復習用の問題を求められたときに使う。\n  lectureには出題したい回の番号を指定する。\n  引数: {\"lecture\": {\"type\": \"integer\"}}\n",
+      "stderr": "                 pydantic-ai v2.57.0 • Python 3.12.13\n      / \\\n     /   \\       agent: target • model: test:test • tools: 3 • capabilities: 0\n   /___.___\\\n  /    |    \\    observability: off — see every model and tool call live, with cost\n/      |      \\    set it up free with Logfire and a GitHub login: https://pydantic.dev/ai-setup.md\n`---.._|_..---'    or use any OpenTelemetry backend: https://pydantic.dev/docs/ai/logfire/#otel\n\n                 goes away once observability is on — or PYDANTIC_AI_NO_BANNER=1\n"
+    },
+    {
+      "check": "quiz_trace",
+      "started_at_jst": "2026-11-09T16:14:42.408476+09:00",
+      "command": [
+        "python",
+        "-m",
+        "app.agent",
+        "--trace",
+        "第2回の内容から確認問題を1問出して"
+      ],
+      "exit_code": 0,
+      "stdout": "[model] gemini-3.5-flash-lite\n第2回の内容から確認問題です！\n\n**問題：**\n「LoRA」とはどのような手法でしょうか？\n\n（考えてみてくださいね。答えを知りたいときは「答えを教えて」と聞いてください！）\n\n関係する回：第2回\n\n--- trace ---\n[tool call]   make_quiz({'lecture': 2})\n[tool return] make_quiz -> {\"question\": \"「LoRA」の意味は？\", \"answer\": \"事前学習済みの重みは固定したまま、重みの更新分を2つの小さな行列の積（低ランク行列）で表し、その小さな行列だけを学習するPEFT手法。学習するパラメータが少なく、…\n[usage] RunUsage(cost=Decimal('0.0004446'), details={'text_prompt_tokens': 932}, input_text_tokens=932, input_tokens=932, output_tokens=66, requests=2, tool_calls=1)\n",
+      "stderr": "                 pydantic-ai v2.57.0 • Python 3.12.13\n      / \\\n     /   \\       agent: target • model: google:gemini-3.5-flash-lite • tools: 3 • capabilities: 0\n   /___.___\\\n  /    |    \\    observability: off — see every model and tool call live, with cost\n/      |      \\    set it up free with Logfire and a GitHub login: https://pydantic.dev/ai-setup.md\n`---.._|_..---'    or use any OpenTelemetry backend: https://pydantic.dev/docs/ai/logfire/#otel\n\n                 goes away once observability is on — or PYDANTIC_AI_NO_BANNER=1\n"
+    },
+    {
+      "check": "pytest",
+      "started_at_jst": "2026-11-09T16:14:48.587612+09:00",
+      "command": [
+        "python",
+        "-m",
+        "pytest",
+        "-q"
+      ],
+      "exit_code": 0,
+      "stdout": "...............                                                          [100%]\n15 passed in 8.22s\n",
+      "stderr": ""
+    }
+  ]
+}

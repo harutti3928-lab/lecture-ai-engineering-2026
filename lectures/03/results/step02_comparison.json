@@ -1,0 +1,34 @@
+{
+  "question": "AIE2026の講座の宿題にある「3レベル」とは何ですか？",
+  "model": "gemini-3.5-flash-lite",
+  "runs": [
+    {
+      "variant": "ask",
+      "started_at_jst": "2026-11-09T14:43:23.175510+09:00",
+      "command": [
+        "python",
+        "-m",
+        "app.ask",
+        "AIE2026の講座の宿題にある「3レベル」とは何ですか？"
+      ],
+      "exit_code": 0,
+      "stdout": "[model] gemini-3.5-flash-lite\n[質問] AIE2026の講座の宿題にある「3レベル」とは何ですか？\n\n申し訳ありませんが、私には「AIE2026」という特定の講座やプログラムに関する詳細な内部情報やシラバスへのアクセスがありません。\n\nただし、一般的なAI教育プログラムやプログラミング講座（AIEなど）において、宿題や課題で言われる**「3レベル（Level 1, Level 2, Level 3）」**は、多くの場合、受講生のスキルや理解度に応じた**「難易度別の課題」**を指しています。\n\n一般的な「3レベル構成」の意味合いとしては、以下のようなケースが考えられます。\n\n1. **レベル1（基礎・初級 / Basic）**\n   * **内容:** 授業で習った基本文法や、AIツールの基本的な使い方をそのまま真似して動かすレベル。\n   * **目的:** まず動かしてみる、成功体験を得る。\n2. **レベル2（応用・中級 / Intermediate）**\n   * **内容:** 条件を少し変えたり、複数の要素を組み合わせたり、自分で少し考えてコードやプロンプトを修正するレベル。\n   * **目的:** 自力で応用する力をつける。\n3. **レベル3（発展・上級 / Advanced または チャレンジ課題）**\n   * **内容:** 習った範囲を超えて自分で調べたり、より高度な問題解決を行ったり、実務レベルに近い課題に挑戦するレベル。\n   * **目的:** 応用力や深い理解を試す（オプション課題扱いのことも多いです）。\n\n---\n\nもし確実な定義や、今回の宿題が何を求めているのかを知りたい場合は、以下のいずれかの方法で確認することをお勧めします。\n\n* **講座のポータルサイトやLMS（学習管理システム）の宿題説明ページ**をもう一度読み直す\n* **SlackやDiscordなどの受講生用コミュニティ、または講師**に直接質問する\n\n具体的な講座のプラットフォーム名や、宿題の周辺の文章（もしあれば）を教えていただければ、さらに推測してお答えできるかもしれません。\n",
+      "stderr": ""
+    },
+    {
+      "variant": "agent",
+      "started_at_jst": "2026-11-09T14:43:27.485971+09:00",
+      "command": [
+        "python",
+        "-m",
+        "app.agent",
+        "--trace",
+        "AIE2026の講座の宿題にある「3レベル」とは何ですか？"
+      ],
+      "exit_code": 0,
+      "stdout": "[model] gemini-3.5-flash-lite\nAIE2026の宿題における「3レベル」とは、宿題の難易度や内容の構成を示すもので、以下の3つの段階に分かれています。\n\n1. **基礎**：講義内容の確認を行うレベル\n2. **実装**：自分で実際にコードを書くレベル\n3. **発展**：調査や新たな試行を行うレベル\n\n3つのレベルのうち、どれか1つに取り組めばその回の宿題は完了となります。なお、原則として宿題の採点は行われません。\n\n第1回\n\n--- trace ---\n[tool call]   search_glossary({'query': '3レベル'})\n[tool return] search_glossary -> [{\"term\": \"宿題の3レベル\", \"lecture\": 1, \"definition\": \"AIE2026の宿題の構成。「基礎（講義内容の確認）」「実装（自分でコードを書く）」「発展（調査や試行）」の3段階があり、どれか1つに取り組…\n[usage] RunUsage(cost=Decimal('0.0005724'), details={'text_prompt_tokens': 783}, input_text_tokens=783, input_tokens=783, output_tokens=135, requests=2, tool_calls=1)\n",
+      "stderr": "                 pydantic-ai v2.57.0 • Python 3.12.13\n      / \\\n     /   \\       agent: target • model: google:gemini-3.5-flash-lite • tools: 2 • capabilities: 0\n   /___.___\\\n  /    |    \\    observability: off — see every model and tool call live, with cost\n/      |      \\    set it up free with Logfire and a GitHub login: https://pydantic.dev/ai-setup.md\n`---.._|_..---'    or use any OpenTelemetry backend: https://pydantic.dev/docs/ai/logfire/#otel\n\n                 goes away once observability is on — or PYDANTIC_AI_NO_BANNER=1\n"
+    }
+  ],
+  "note": "Agent uses --trace for evidence of tool calls. Same question, one run per variant; instructions and tool availability differ."
+}

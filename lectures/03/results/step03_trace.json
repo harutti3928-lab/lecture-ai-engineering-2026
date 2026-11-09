@@ -1,0 +1,15 @@
+{
+  "question": "LoRAとQLoRAの違いは？",
+  "model": "gemini-3.5-flash-lite",
+  "started_at_jst": "2026-11-09T14:53:41.111442+09:00",
+  "command": [
+    "python",
+    "-m",
+    "app.agent",
+    "--trace",
+    "LoRAとQLoRAの違いは？"
+  ],
+  "exit_code": 0,
+  "stdout": "[model] gemini-3.5-flash-lite\n講座の用語集によると、LoRAとQLoRAの違いは以下のとおりです。\n\n* **LoRA**\n  事前学習済みの重みは固定したまま、重みの更新分を2つの小さな行列（低ランク行列）の積で表し、その小さな行列だけを学習するPEFT（Parameter-Efficient Fine-Tuning）手法です。学習するパラメータが少なく、学習結果も小さなファイルで保存できます。\n\n* **QLoRA**\n  ベースモデルの重みを4ビットなどに**量子化**してメモリを大幅に節約したうえで、LoRAによるファインチューニングを行う手法です。これにより、より大きなモデルを小さなGPU環境でも扱えるようになります。\n\n関係する回：第2回\n\n--- trace ---\n[tool call]   search_glossary({'query': 'LoRA'})\n[tool call]   search_glossary({'query': 'QLoRA'})\n[tool return] search_glossary -> [{\"term\": \"LoRA\", \"lecture\": 2, \"definition\": \"事前学習済みの重みは固定したまま、重みの更新分を2つの小さな行列の積（低ランク行列）で表し、その小さな行列だけを学習するPEFT手法。学習するパラ…\n[tool return] search_glossary -> [{\"term\": \"QLoRA\", \"lecture\": 2, \"definition\": \"ベースモデルの重みを4ビットなどに量子化してメモリを節約したうえで、LoRAで学習する手法。より大きなモデルを小さなGPUで扱える。本講座の第2…\n[usage] RunUsage(cost=Decimal('0.0008488'), details={'text_prompt_tokens': 1196}, input_text_tokens=1196, input_tokens=1196, output_tokens=196, requests=2, tool_calls=2)\n",
+  "stderr": "                 pydantic-ai v2.57.0 • Python 3.12.13\n      / \\\n     /   \\       agent: target • model: google:gemini-3.5-flash-lite • tools: 2 • capabilities: 0\n   /___.___\\\n  /    |    \\    observability: off — see every model and tool call live, with cost\n/      |      \\    set it up free with Logfire and a GitHub login: https://pydantic.dev/ai-setup.md\n`---.._|_..---'    or use any OpenTelemetry backend: https://pydantic.dev/docs/ai/logfire/#otel\n\n                 goes away once observability is on — or PYDANTIC_AI_NO_BANNER=1\n"
+}
