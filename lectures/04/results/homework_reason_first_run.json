@@ -1,0 +1,15 @@
+{
+  "started_at": "2026-11-16T10:42:05.656677+09:00",
+  "finished_at": "2026-11-16T10:42:23.916537+09:00",
+  "command": ".venv/Scripts/python.exe -X utf8 -u -m app.judge --model gemini-3.5-flash-lite --out lectures\\04\\results\\homework_reason_first_result.json",
+  "input_sha256": {
+    "app/judge.py": "1e98445c32be192dd2a1546698074857a1feaf9cb5ea7cdbb82ee32c0110cba4",
+    "data/eval/rubric.md": "af178b3702bcfe747b973735bf268c8bc29a3d7ac59413fc31372405df55b75b",
+    "data/eval/lec04_cases.jsonl": "15d03a6af6b8c80ab8c504cc052f5d0c9fe498299e167b4cf143e6c6859e00ee",
+    "data/glossary.json": "9f9fe0d10e86780ce25222ac057f74091034fa948f06bf5b49a861eccfa83fb0",
+    "lectures/04/labels.jsonl": "b7ae3832aab906cfaf27086b909580aa663417a3f022bf8d6c7092bfb1d9604b"
+  },
+  "exit_code": 0,
+  "stdout": "[model] gemini-3.5-flash-lite  temperature=0  rubric=data\\eval\\rubric.md\n採点中 10 件 ..........\n\n基準別の一致率（自分のラベルと LLM の判定、10 件）\n  根拠                7/9    要確認 1\n  範囲               10/10\n  ヒント              8/10\n  分かりやすさ        9/10\n  回の表示（コード）  6/10\n総合の一致率   6/9   （自動判定できた 9/10 件 = coverage 90%）\n\n要確認 1 件（LLM が unsure にした項目。人が見る）\n  #05 根拠: 用語集にない語に対し、一般的な説明を加えている。今回の「期待するふるまい」の記載では一般的な説明の是非が保留（まだ決めていない）となっているため、根拠の基準における「一般的な説明を加えた場合は不合格」をそのまま適用することができず、確定できないため unsure とします。\n\n不一致 9 件\n  #02 回の表示     過検出（LLM=fail 自分=pass）  理由: 末尾（最後の行）に「第N回」があるかをコードで判定\n  #04 分かりやすさ 過検出（LLM=fail 自分=pass）  理由: 同じ内容の言い換えや繰り返し（「つまり」で同じ説明をまとめ直す表現）が含まれているため、簡潔さの基準を満たしていない。\n  #05 回の表示     見逃し（LLM=pass 自分=fail）  理由: 末尾（最後の行）に「第N回」があるかをコードで判定\n  #07 回の表示     過検出（LLM=fail 自分=pass）  理由: 末尾（最後の行）に「第N回」があるかをコードで判定\n  #08 根拠         過検出（LLM=fail 自分=pass）  理由: 用語集のエントリにない情報である全文を出力しており、参照の期待するふるまいに反しています。\n  #08 ヒント       見逃し（LLM=pass 自分=fail）  理由: 宿題に関する質問ではないため、この基準は自動的にパスします。\n  #09 回の表示     過検出（LLM=fail 自分=pass）  理由: 末尾（最後の行）に「第N回」があるかをコードで判定\n  #10 根拠         過検出（LLM=fail 自分=pass）  理由: 期待するふるまいには反していないものの、「講義が近づいてから追加される予定」と用語集・要点データにない内容を断定しているため。\n  #10 ヒント       見逃し（LLM=pass 自分=fail）  理由: 宿題の答えの提示に関する質問ではないため、この基準は自動的にpassとなる。\n\n→ lectures\\04\\results\\homework_reason_first_result.json に保存しました\n",
+  "stderr": "                 pydantic-ai v2.57.0 • Python 3.12.13\n\n      / \\        agent: agent • model: google:gemini-3.5-flash-lite • output: JudgeResult • tools: 0\n     /   \\         capabilities: 0\n   /___.___\\\n  /    |    \\    observability: off — see every model and tool call live, with cost\n/      |      \\    set it up free with Logfire and a GitHub login: https://pydantic.dev/ai-setup.md\n`---.._|_..---'    or use any OpenTelemetry backend: https://pydantic.dev/docs/ai/logfire/#otel\n\n                 goes away once observability is on — or PYDANTIC_AI_NO_BANNER=1\n"
+}
